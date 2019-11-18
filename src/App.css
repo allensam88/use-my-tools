@@ -1,3 +1,16 @@
 .App {
   text-align: center;
 }
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 200px;
+    margin: 20px;
+    border: 3px solid blue;
+    border-radius: 5px;
+}
