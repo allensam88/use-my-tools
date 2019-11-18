@@ -3,23 +3,23 @@ export const dummyUsers = [
         id: 1,
         username: 'Bob',
         password: '5678',
-        image: '',
+        profilePic: '',
         city: 'Fargo',
         state: 'ND',
         tools: [
             {
                 name: 'snowblower',
-                image: '',
+                toolImg: '',
                 price: 20
             },
             {
                 name: 'woodchipper',
-                image: '',
+                toolImg: '',
                 price: 30
             },
             {
                 name: 'chainsaw',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -28,23 +28,23 @@ export const dummyUsers = [
         id: 2,
         username: 'Judy',
         password: '1234',
-        image: '',
+        profilePic: '',
         city: 'Casper',
         state: 'WY',
         tools: [
             {
                 name: 'axe',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'leafblower',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'sledgehammer',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -53,23 +53,23 @@ export const dummyUsers = [
         id: 3,
         username: 'Bill',
         password: 'asdf',
-        image: '',
+        profilePic: '',
         city: 'Wilmington',
         state: 'DE',
         tools: [
             {
                 name: 'air compressor',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'framing gun',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'finish gun',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -78,23 +78,23 @@ export const dummyUsers = [
         id: 4,
         username: 'John',
         password: 'jkl;',
-        image: '',
+        profilePic: '',
         city: 'Austin',
         state: 'TX',
         tools: [
             {
                 name: 'lawnmower',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'roto-tiller',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'rake',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -103,23 +103,23 @@ export const dummyUsers = [
         id: 5,
         username: 'Suzie',
         password: 'good',
-        image: '',
+        profilePic: '',
         city: 'Memphis',
         state: 'TN',
         tools: [
             {
                 name: 'wood splitter',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'torque wrench',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'laser level',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -128,23 +128,23 @@ export const dummyUsers = [
         id: 6,
         username: 'George',
         password: 'better',
-        image: '',
+        profilePic: '',
         city: 'Ann Arbor',
         state: 'MI',
         tools: [
             {
                 name: 'winch',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'ratchet set',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'arc welder',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -153,23 +153,23 @@ export const dummyUsers = [
         id: 7,
         username: 'Heather',
         password: 'best',
-        image: '',
+        profilePic: '',
         city: 'Buffalo',
         state: 'NY',
         tools: [
             {
                 name: 'blowtorch',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'flamethrower',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'hacksaw',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -178,23 +178,23 @@ export const dummyUsers = [
         id: 8,
         username: 'Jim',
         password: 'blob#',
-        image: '',
+        profilePic: '',
         city: 'St Louis',
         state: 'MO',
         tools: [
             {
                 name: 'table saw',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'mitre saw',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'hand saw',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -203,23 +203,23 @@ export const dummyUsers = [
         id: 9,
         username: 'Steve',
         password: 'hero42',
-        image: '',
+        profilePic: '',
         city: 'Seattle',
         state: 'WA',
         tools: [
             {
                 name: 'cement mixer',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'masonry toolkit',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'impact driver',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -228,23 +228,23 @@ export const dummyUsers = [
         id: 10,
         username: 'Adam',
         password: 'next9',
-        image: '',
+        profilePic: '',
         city: 'Phoenix',
         state: 'AZ',
         tools: [
             {
                 name: 'volt meter',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'ladder',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'bolt cutters',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -253,23 +253,23 @@ export const dummyUsers = [
         id: 11,
         username: 'Joe',
         password: 'believe!',
-        image: '',
+        profilePic: '',
         city: 'Anchorage',
         state: 'AK',
         tools: [
             {
                 name: 'sluice box',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'pick axe',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'shovel',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
@@ -278,23 +278,23 @@ export const dummyUsers = [
         id: 12,
         username: 'Jenny',
         password: '9876',
-        image: '',
+        profilePic: '',
         city: 'Billings',
         state: 'MT',
         tools: [
             {
                 name: 'leather craft kit',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'sewing machine',
-                image: '',
+                toolImg: '',
                 price: 25
             },
             {
                 name: 'pottery wheel',
-                image: '',
+                toolImg: '',
                 price: 25
             }
         ]
