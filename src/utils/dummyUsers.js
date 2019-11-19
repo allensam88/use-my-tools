@@ -1,9 +1,25 @@
-//endpoints
-//login
-//signin
-//${userid} -> show up on the profile page
-//tools -> render tool list
-//tools/${id}
+//****ENDPOINTS****
+//login - done
+//register - done
+
+
+//Produce two data endpoints
+    //1st list stuff - '/tools'
+        //all the tools
+        //each tool has a name, owner, location, and price (plus image)
+
+    //2nd user profile - '/user/:id'
+        //single user name
+        //user's location
+        //list of tools w/ pricing
+
+//add a tool
+
+//update user profile and their tools - '/update-user/:id'
+
+//delete user profile
+
+//delete single tool only
 
 const dummyUsers = [
   {
