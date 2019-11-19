@@ -21,7 +21,7 @@
 
 //delete single tool only
 
-export const dummyUsers = [
+ const dummyUsers = [
     {
         id: 1,
         username: 'Bob',
@@ -107,3 +107,5 @@ export const dummyUsers = [
         location: 'Billings, MT',
     }
 ]
+
+export default dummyUsers;
