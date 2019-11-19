@@ -1,28 +1,41 @@
-import React from 'react';
-import dummyToolsList from '../../utils/dummyToolsList';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchTools } from '../../utils/actions';
 
+const ToolList = props => {
+    useEffect(() => {
+        props.fetchTools();
+    }, [])
 
-
-export default function ToolList() {
- 
-    return (
-        <div className="Tools-list">
-          {dummyToolsList.map(tools => (
-            <div className="card">
-            <div className="card-body">
-              <img className="card-img-top" src={tools.Image} alt="tool-img"/>
-              <h4 className="card-title">Tool: {tools.Name}</h4>
-              <p>Owner: {tools.Owner} </p>
-              <p>Price: {tools.Price} </p>
-              <p>Location: {tools.Location} </p>
-              <button className="btn btn-custom" type="submit">Borrow</button>
+    if (!props) {
+        return (
+            <p>Loading Tool List...</p>
+        )
+    } else {
+        return (
+            <div className="Tools-list">
+                {props.tools.map(tool => (
+                    <div className="card">
+                        <div className="card-body">
+                            {/* <img className="card-img-top" src={tool.Image} alt="tool-img" /> */}
+                            <h4 className="card-title">Tool: {tool.Name}</h4>
+                            <p>Owner: {tool.Owner} </p>
+                            <p>Price: {tool.Price} </p>
+                            <p>Location: {tool.Location} </p>
+                            <button className="btn btn-custom" type="submit">Borrow</button>
+                        </div>
+                    </div>
+                ))}
             </div>
-          </div>
-          ))}      
-        </div>
-    )
+        )
+    }
 }
 
+    const mapStateToProps = state => {
+        return {
+            tools: state.tools,
+            isFetching: state.isFetching
+        }
+    }
 
-
-
+export default connect(mapStateToProps, { fetchTools })(ToolList);

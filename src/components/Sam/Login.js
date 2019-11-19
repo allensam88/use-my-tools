@@ -52,7 +52,7 @@ const Login = props => {
         }
 
         AxiosWithAuth()
-        .post('/auth/login', credentials)
+        .post('/api/auth/login', credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token)
             props.history.push('/tools')

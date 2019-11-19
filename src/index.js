@@ -8,14 +8,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-// const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(thunk));
 
-{/* <Provider store={store}>
-</Provider>,  */}
 ReactDOM.render(
-
-    <Router>
-        <App />
-    </Router>,
-
+    <Provider store={store}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
 document.getElementById('root'));
