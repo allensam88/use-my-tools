@@ -42,7 +42,7 @@ const Profile = props => {
         return (
             <div>
                 <i className="fas fa-user-circle fa-10x" />
-                <ProfileInfo>
+                <div>
                     <h1>{userProfile.user.username}</h1>
                     <h2>{userProfile.user.location}</h2>
                     {userProfile.tools.map((tool) => {
@@ -50,7 +50,7 @@ const Profile = props => {
                             <p>{tool.name}</p>
                             <p>{tool.price}</p>
                         </div>})}
-                </ProfileInfo>
+                </div>
             </div>
         );
     };
