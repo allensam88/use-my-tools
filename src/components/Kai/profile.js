@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
-import { fetchUser } from '../../utils/actions';
-import { dummySingleUser1 as user1 } from '../../utils/dummySingleUser';
+import { fetchUserById } from '../../utils/actions';
+import AxiosWithAuth from '../../utils/AxiosWithAuth';
+// import { dummySingleUser1 as user1 } from '../../utils/dummySingleUser';
 import styled from "styled-components";
 
 const ProfileInfo = styled.div`
@@ -19,32 +20,47 @@ const ProfileInfo = styled.div`
   }
 `;
 
-
 const Profile = props => {
-    // const id = props.match.params.id
-    // console.log('route id', id);
-    // useEffect(() => {
-    //     fetchUser(id)
-    //     console.log('User', props.user);
-    // }, [id]);
-  
-    return (
-    <ProfileInfo>
-      <i class="fas fa-user-circle fa-10x" />
-      <div className="userinfo">
-        <h1>{user1.user.username}</h1>
-        <h2>{user1.user.location}</h2>
-      </div>
-    </ProfileInfo>
-  );
-};
+    const [userProfile, setUserProfile] = useState(null);
+    
+    useEffect(() => {
+        const id = props.match.params.id
+        AxiosWithAuth()
+        .get(`/users/${id}`)
+        .then(res => {
+            console.log('user', res.data)
+            setUserProfile(res.data);
+        })
+        .catch(err => console.log(err));
+    }, []);
 
-// const mapStateToProps = state => {
-//     return {
-//         user: state.users,
-//         isFetching: state.isFetching
-//     }
-// }
+    if (!userProfile) {
+        return (
+            <p>Loading User Profile...</p>
+        )
+    } else {
+        return (
+            <div>
+                <i className="fas fa-user-circle fa-10x" />
+                <div>
+                    <h1>{userProfile.user.username}</h1>
+                    <h2>{userProfile.user.location}</h2>
+                    {userProfile.tools.map((tool) => {
+                        return <div key={tool.id}>
+                            <p>{tool.name}</p>
+                            <p>{tool.price}</p>
+                        </div>})}
+                </div>
+            </div>
+        );
+    };
+}
 
-// export default connect(mapStateToProps, { fetchUser })(Profile);
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        userProfile: state.userProfile,
+        isFetching: state.isFetching
+    }
+}
+
+export default connect(mapStateToProps, { fetchUserById })(Profile);

@@ -9,6 +9,7 @@ import Profile from "./components/Kai/profile";
 import NavBar from "./components/Kai/navBar";
 import Footer from "./components/Kai/footer";
 function App() {
+
   return (
     <div className="App">
       <NavBar />
