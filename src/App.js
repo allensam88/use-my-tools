@@ -4,13 +4,14 @@ import PrivateRoute from './utils/PrivateRoute';
 import Login from './components/Sam/Login';
 import SignUp from './components/Sam/SignUp';
 import './App.css';
-
+import { dummyUsers } from './utils/dummyUsers';
+import ToolList from './components/Aaron/ToolList';
 import { dummySingleUser } from './utils/dummySingleUser';
 
 function App() {
     return (
         <div className="App">
-            <h1>App Title</h1>
+            <h1>Use My Tools!!!</h1>
             <Route exact path="/" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <h2>{dummySingleUser.user.username}</h2>
@@ -21,9 +22,7 @@ function App() {
                     <p>Price: {tool.price}</p>
                 </div>
             })}
-
-            {/* <PrivateRoute path="/tool-list" component={} />
-            <PrivateRoute path="/user/:id" component={} /> */}
+            <PrivateRoute path="/tools" component={ToolList} />
         </div>
     );
 }

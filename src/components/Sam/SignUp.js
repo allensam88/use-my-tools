@@ -45,6 +45,7 @@ const SignUp = props => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
+    const [location, setLocation] = useState('');
 
     const userHandler = e => {
         setUser(e.target.value)
@@ -58,16 +59,21 @@ const SignUp = props => {
         setConfirmPass(e.target.value)
     };
 
+    const locationHandler = e => {
+        setLocation(e.target.value)
+    };
+
     const register = e => {
         const newUser = {
             username: user,
             password: pass,
+            location: location,
         }
 
         if (pass === confirmPass) {
             e.preventDefault();
             AxiosWithAuth()
-            .post('auth/register', newUser)
+            .post('/auth/register', newUser)
             .then(res => {
                 console.log(res)
                 // alert(`Succesfully created user "${res.data.username}"!`)
@@ -77,6 +83,7 @@ const SignUp = props => {
             setUser('');
             setPass('');
             setConfirmPass('');
+            setLocation('');
         } else {
             e.preventDefault();
             alert('Error! Passwords do not match!')
@@ -102,6 +109,7 @@ const SignUp = props => {
                 {passLength()}
                 <StyledInput type="password" name="confirm password" value={confirmPass} onChange={confirmHandler} placeholder="Confirm Password" />
                 {passConfirm()}
+                <StyledInput type="text" name="location" value={location} onChange={locationHandler} placeholder="location" />
                 <StyledButton>Register</StyledButton>
             </StyledForm>
         </div>

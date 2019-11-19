@@ -31,7 +31,6 @@ const StyledButton = styled.button`
     }
 `;
 
-
 const Login = props => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
@@ -56,7 +55,7 @@ const Login = props => {
         .post('/auth/login', credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token)
-            props.history.push('/client-list')
+            props.history.push('/tools')
         })
         .catch(err => console.log(err))
     }
