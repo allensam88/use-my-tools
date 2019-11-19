@@ -1,4 +1,4 @@
-export const dummySingleUser1 = {
+export const dummySingleUser = {
     user: {
         id: 1,
         username: "Billy Bob",
