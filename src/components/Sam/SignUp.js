@@ -73,7 +73,7 @@ const SignUp = props => {
         if (pass === confirmPass) {
             e.preventDefault();
             AxiosWithAuth()
-            .post('/auth/register', newUser)
+            .post('/api/auth/register', newUser)
             .then(res => {
                 console.log(res)
                 // alert(`Succesfully created user "${res.data.username}"!`)

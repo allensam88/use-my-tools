@@ -1,10 +1,9 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE,
-    ADD_START, ADD_SUCCESS, ADD_FAILURE,
-    UPDATE_START, UPDATE_SUCCESS, UPDATE_FAILURE,
-    DELETE_START, DELETE_SUCCESS, DELETE_FAILURE } from './actions';
+import { FETCH_TOOLS_START, FETCH_TOOLS_SUCCESS, FETCH_TOOLS_FAILURE,
+    ADD_TOOL_START, ADD_TOOL_SUCCESS, ADD_TOOL_FAILURE,
+    UPDATE_TOOL_START, UPDATE_TOOL_SUCCESS, UPDATE_TOOL_FAILURE } from './actions';
 
 const initialState = {
-    users: [],
+    tools: [],
     isFetching: false,
     isAdding: false,
     isUpdating: false,
@@ -14,82 +13,82 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_START:
+        case FETCH_TOOLS_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
             }
-        case FETCH_SUCCESS:
+        case FETCH_TOOLS_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
-                users: action.payload
+                tools: action.payload
             }
-        case FETCH_FAILURE:
+        case FETCH_TOOLS_FAILURE:
             return {
                 ...state,
                 error: action.payload,
                 isFetching: false
             }
-        case ADD_START:
+        case ADD_TOOL_START:
             return {
                 ...state,
                 isAdding: true,
                 error: ''
             }
-        case ADD_SUCCESS:
+        case ADD_TOOL_SUCCESS:
             return {
                 ...state,
                 isAdding: false,
                 error: '',
-                users: [...state.users, action.payload]
+                users: [...state.tools, action.payload]
             }
-        case ADD_FAILURE:
+        case ADD_TOOL_FAILURE:
             return {
                 ...state,
                 error: action.payload,
                 isAdding: false
             }
-        case UPDATE_START:
+        case UPDATE_TOOL_START:
             return {
                 ...state,
                 isAdding: true,
                 error: ''
             }
-        case UPDATE_SUCCESS:
+        case UPDATE_TOOL_SUCCESS:
             return {
                 ...state,
                 isUpdating: false,
                 error: '',
-                userss: [...state.users.filter(item => { return item.id !== action.payload.id}), action.payload]
+                userss: [...state.tools.filter(item => { return item.id !== action.payload.id}), action.payload]
             }
-        case UPDATE_FAILURE:
+        case UPDATE_TOOL_FAILURE:
             return {
                 ...state,
                 error: action.payload,
                 isUpdating: false
             }
-        case DELETE_START:
-            return {
-                ...state,
-                isDeleting: true,
-                error: ''
-            }
-        case DELETE_SUCCESS:
-            return {
-                ...state,
-                isDeleting: false,
-                error: '',
-                users: state.users.filter(item => { return item.id !== action.payload})
-            }
-        case DELETE_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-                isDeleting: false
-            }
+        // case DELETE_TOOL_START:
+        //     return {
+        //         ...state,
+        //         isDeleting: true,
+        //         error: ''
+        //     }
+        // case DELETE_TOOL_SUCCESS:
+        //     return {
+        //         ...state,
+        //         isDeleting: false,
+        //         error: '',
+        //         users: state.tools.filter(item => { return item.id !== action.payload})
+        //     }
+        // case DELETE_TOOL_FAILURE:
+        //     return {
+        //         ...state,
+        //         error: action.payload,
+        //         isDeleting: false
+        //     }
             default:
             return state;
     }
