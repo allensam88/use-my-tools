@@ -11,15 +11,14 @@ import NavBar from "./components/Kai/navBar";
 function App() {
     return (
         <div className="App">
-            <h1>Use My Tools!!!</h1>
             <NavBar />
             <Route exact path="/" component={Login} />
             
             <Route path="/sign-up" component={SignUp} />
             
-            <PrivateRoute path="/tools" component={ToolList} />
+            <PrivateRoute  path="/tools" component={ToolList} />
             
-            <PrivateRoute path="/user/:id" component={Profile} />
+            <PrivateRoute  path="/user/:id" component={Profile} />
         </div>
     );
 }

@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTools } from '../../utils/actions';
+import SearchForm from './SearchForm';
+
+
 
 const ToolList = props => {
     useEffect(() => {
         props.fetchTools();
-    }, [])
+    }, [props])
 
     if (!props) {
         return (
@@ -13,6 +16,10 @@ const ToolList = props => {
         )
     } else {
         return (
+            <div className="Tools-list">
+                <div className="search-div">
+                    <SearchForm />
+                </div>
             <div className="Tools-list">
                 {props.tools.map(tool => (
                     <div className="card">
@@ -26,6 +33,7 @@ const ToolList = props => {
                         </div>
                     </div>
                 ))}
+            </div>
             </div>
         )
     }
