@@ -8,7 +8,7 @@ import SearchForm from './SearchForm';
 const ToolList = props => {
     useEffect(() => {
         props.fetchTools();
-    }, [props])
+    }, [])
 
     if (props.isFetching) {
         return (
