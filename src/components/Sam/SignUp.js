@@ -1,11 +1,50 @@
 import React, { useState } from 'react';
 import AxiosWithAuth from '../../utils/AxiosWithAuth';
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+    display: flex;
+    flex-direction: column;
+`;
+
+const StyledInput = styled.input`
+    font-size: 20px;    
+    line-height: 25px;
+    width: 200px;
+    margin: 10px auto;
+    padding-left: 5px;
+    border: 2px solid #454851;
+    border-radius: 5px;
+`;
+
+const StyledWarning = styled.p`
+    color: red;
+    font-weight: bold;
+`;
+
+const StyledAccept = styled.p`
+    color: green;
+    font-weight: bold;
+`;
+
+const StyledButton = styled.button`
+    font-size: 20px;
+    width: 120px;   
+    margin: 10px auto; 
+    background-color: #CE8147;
+    border: 2px solid #454851;
+    border-radius: 5px;
+    cursor: pointer;
+
+    :hover {
+        background-color: gray;
+    }
+`;
 
 const SignUp = props => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
-    const [email, setEmail] = useState('');
 
     const userHandler = e => {
         setUser(e.target.value)
@@ -19,30 +58,25 @@ const SignUp = props => {
         setConfirmPass(e.target.value)
     };
 
-    const emailHandler = e => {
-        setEmail(e.target.value)
-    };
-
     const register = e => {
         const newUser = {
             username: user,
             password: pass,
-            email: email
         }
 
         if (pass === confirmPass) {
             e.preventDefault();
             AxiosWithAuth()
-            .post('empty', newUser)
+            .post('auth/register', newUser)
             .then(res => {
-                alert(`Succesfully created user "${res.data.info.username}"!`)
-                props.history.push('/')
+                console.log(res)
+                // alert(`Succesfully created user "${res.data.username}"!`)
+                props.history.push("/")
             })
             .catch(err => console.log(err))
             setUser('');
             setPass('');
             setConfirmPass('');
-            setEmail('');
         } else {
             e.preventDefault();
             alert('Error! Passwords do not match!')
@@ -51,26 +85,25 @@ const SignUp = props => {
 
     const passConfirm = () => {
         return pass === '' && confirmPass === '' || confirmPass.length === 0 ? ''
-        : pass === confirmPass ? <p>Passwords match!</p>
-        : <p>Passwords must match!</p>;
+        : pass === confirmPass ? <StyledAccept>Passwords match!</StyledAccept>
+        : <StyledWarning>***Passwords must match***</StyledWarning>;
     }
 
     const passLength = () => {
         return pass.length === 0 || pass.length > 3 ? ''
-        : <p>Password must be at least 4 characters!</p>
+        : <StyledWarning>***Password must be at least 4 characters***</StyledWarning>
     }
 
     return (
         <div>
-            <form onSubmit={register}>
-                <input type="text" name="user" value={user} onChange={userHandler} placeholder="Username" />
-                <input type="password" name="password" value={pass} onChange={passHandler} placeholder="Password" />
+            <StyledForm onSubmit={register}>
+                <StyledInput type="text" name="user" value={user} onChange={userHandler} placeholder="Username" />
+                <StyledInput type="password" name="password" value={pass} onChange={passHandler} placeholder="Password" />
                 {passLength()}
-                <input type="password" name="confirm password" value={confirmPass} onChange={confirmHandler} placeholder="Confirm Password" />
+                <StyledInput type="password" name="confirm password" value={confirmPass} onChange={confirmHandler} placeholder="Confirm Password" />
                 {passConfirm()}
-                <input type="email" name="email" value={email} onChange={emailHandler} placeholder="Email Address" />
-                <button>Register</button>
-            </form>
+                <StyledButton>Register</StyledButton>
+            </StyledForm>
         </div>
     )
 }
