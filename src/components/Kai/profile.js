@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
-import { fetchUser } from '../../utils/actions';
-import { dummySingleUser1 as user1 } from '../../utils/dummySingleUser';
+import { fetchUserById } from '../../utils/actions';
+// import { dummySingleUser1 as user1 } from '../../utils/dummySingleUser';
 import styled from "styled-components";
 
 const ProfileInfo = styled.div`
@@ -19,32 +19,38 @@ const ProfileInfo = styled.div`
   }
 `;
 
-
 const Profile = props => {
-    // const id = props.match.params.id
-    // console.log('route id', id);
-    // useEffect(() => {
-    //     fetchUser(id)
-    //     console.log('User', props.user);
-    // }, [id]);
+    useEffect(() => {
   
-    return (
-    <ProfileInfo>
-      <i class="fas fa-user-circle fa-10x" />
-      <div className="userinfo">
-        <h1>{user1.user.username}</h1>
-        <h2>{user1.user.location}</h2>
-      </div>
-    </ProfileInfo>
-  );
-};
+        const id = props.match.params.id
+        props.fetchUserById(id);
+    }, [props.match.params.id]);
 
-// const mapStateToProps = state => {
-//     return {
-//         user: state.users,
-//         isFetching: state.isFetching
-//     }
-// }
+    console.log('User Profile', props.userProfile);
 
-// export default connect(mapStateToProps, { fetchUser })(Profile);
-export default Profile;
+    if (props.isFetching) {
+        return (
+            <p>Loading User Profile...</p>
+        )
+    } else {
+        return (
+            <div>
+                <i className="fas fa-user-circle fa-10x" />
+                <div className="userinfo">
+                    <h1>{props.userProfile.user.username}</h1>
+                    <h2>{props.userProfile.user.location}</h2>
+                </div>
+            </div>
+        );
+    };
+}
+
+const mapStateToProps = state => {
+    return {
+        userProfile: state.userProfile,
+        isFetching: state.isFetching
+    }
+}
+
+export default connect(mapStateToProps, { fetchUserById })(Profile);
+// export default Profile;
