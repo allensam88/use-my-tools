@@ -1,14 +1,13 @@
 import React from "react";
-import "../../NavBar.css";
+import "../../Components.css";
 import { Link } from "react-router-dom";
+import logo from "../../img/Wht-Logo.png";
 
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-custom">
-      <a className="navbar-brand" href="#">
-        Use My Tools
-      </a>
+      <img src={logo} alt={"logo"} />
       <ul className="nav">
         <li className="nav-item">
           <Link to="/toolList" className="nav-link">Link</Link>

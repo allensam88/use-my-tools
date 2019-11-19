@@ -1,22 +1,23 @@
 .App {
   text-align: center;
+  padding-bottom: 60px;
 }
 
 .card-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
-    width: 16%;
-    margin: 30px;
-    border-radius: 25px;
-    background-color: #4D7C8A;
-    color: white;
-    border-color: #454851;
-    box-shadow: 3px 3px 5px gray;
-    transition: 600ms;
+  width: 16%;
+  margin: 30px;
+  border-radius: 25px;
+  background-color: #4d7c8a;
+  color: white;
+  border-color: #454851;
+  box-shadow: 3px 3px 5px gray;
+  transition: 600ms;
 }
 
 .card:hover {
@@ -47,13 +48,3 @@
   margin-left: 4%;
   margin-top: 5%;
 }
-
-
-
-
-
-
-
-
-
-
