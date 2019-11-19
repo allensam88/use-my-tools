@@ -19,7 +19,7 @@ function App() {
             
             <PrivateRoute path="/tools" component={ToolList} />
             
-            <PrivateRoute exact path="/userprofile" component={Profile} />
+            <PrivateRoute path="/user/:id" component={Profile} />
         </div>
     );
 }

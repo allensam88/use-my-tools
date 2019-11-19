@@ -21,11 +21,26 @@ export const UPDATE_TOOL_FAILURE = 'UPDATE_FAILURE';
 // export const DELETE_TOOL_FAILURE ='DELETE_FAILURE';
 
 //GET /users
+export const FETCH_USERS_START = "FETCH_USERS_START";
+export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
+export const FETCH_USERS_FAILURE = 'FETCH_USERS_SUCCESS';
+
 //GET /users/:id
+export const FETCH_USERID_START = "FETCH_USERID_START";
+export const FETCH_USERID_SUCCESS = 'FETCH_USERID_SUCCESS';
+export const FETCH_USERID_FAILURE = 'FETCH_USERID_FAILURE';
+
 //PUT /users/:id
+export const UPDATE_USER_START = "UPDATE_USER_START";
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
+
 //DELETE /users/:id endpoint not built yet
 
-/***Action Creator Functions***/
+
+
+/****** Action Creator Functions ******/
+/***TOOL ACTIONS***/
 //GET https://use-my-tool.herokuapp.com/tools
 export const fetchTools = () => dispatch => {
     dispatch({ type: FETCH_TOOLS_START });
@@ -55,6 +70,7 @@ export const updateTool = updatedTool => dispatch => {
     .then(res => dispatch({ type: UPDATE_TOOL_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: UPDATE_TOOL_FAILURE, payload: err }))
 }
+
 //DELETE tool endpoint not built yet.
 // export const deleteTool = deletedTool => dispatch => {
 //     dispatch({ type: DELETE_TOOL_START });
@@ -65,7 +81,34 @@ export const updateTool = updatedTool => dispatch => {
 //     .catch(err => dispatch({ type: DELETE_TOOL_FAILURE, payload: err }))
 // }
 
+/***USER ACTIONS***/
 //GET https://use-my-tool.herokuapp.com/users
+export const fetchUsers = () => dispatch => {
+    dispatch({ type: FETCH_USERS_START });
+
+    AxiosWithAuth()
+    .get('/users')
+    .then(res => dispatch({ type: FETCH_USERS_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: FETCH_USERS_FAILURE, payload: err }));
+}
+
 //GET https://use-my-tool.herokuapp.com/users/:id
+export const fetchUser = id => dispatch => {
+    dispatch({ type: FETCH_USERID_START });
+
+    AxiosWithAuth()
+    .get(`/users/${id}`)
+    .then(res => dispatch({ type: FETCH_USERID_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: FETCH_USERID_FAILURE, payload: err }));
+}
 //PUT https://use-my-tool.herokuapp.com/users/:id
+export const updateUser = updatedUser => dispatch => {
+    dispatch({ type: UPDATE_USER_START });
+
+    AxiosWithAuth()
+    .put(`/users/${updatedUser.id}`, updatedUser)
+    .then(res => dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: UPDATE_USER_FAILURE, payload: err }))
+}
+
 //DELETE user endpoint not built yet

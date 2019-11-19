@@ -1,5 +1,7 @@
-import React from "react";
-import { dummySingleUser1 as user1 } from "../../utils/dummySingleUser";
+import React, { useEffect } from "react";
+import { connect } from 'react-redux';
+import { fetchUser } from '../../utils/actions';
+import { dummySingleUser1 as user1 } from '../../utils/dummySingleUser';
 import styled from "styled-components";
 
 const ProfileInfo = styled.div`
@@ -17,8 +19,16 @@ const ProfileInfo = styled.div`
   }
 `;
 
+
 const Profile = props => {
-  return (
+    // const id = props.match.params.id
+    // console.log('route id', id);
+    // useEffect(() => {
+    //     fetchUser(id)
+    //     console.log('User', props.user);
+    // }, [id]);
+  
+    return (
     <ProfileInfo>
       <i class="fas fa-user-circle fa-10x" />
       <div className="userinfo">
@@ -29,4 +39,12 @@ const Profile = props => {
   );
 };
 
+// const mapStateToProps = state => {
+//     return {
+//         user: state.users,
+//         isFetching: state.isFetching
+//     }
+// }
+
+// export default connect(mapStateToProps, { fetchUser })(Profile);
 export default Profile;
