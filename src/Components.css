@@ -1,20 +1,26 @@
 .navbar-custom {
   background-color: #454851;
+  height: 78px;
 }
 
 .navbar-custom img {
   width: 150px;
+  padding-left: 2em 1em;
+  margin: 4px, auto;
 }
 
-.nav-links {
-  font-family: "Raleway", sans-serif;
-  color: #fff;
+.nav-link {
+  color: white;
   text-decoration: none;
+  display: block;
+  text-transform: uppercase;
+  padding: 0;
+  margin-left: 1em;
 }
 
-.nav-links:hover {
-  background: #73956f;
-  color: #454851;
+.nav-link:hover {
+  color: #ce8147;
+  border-bottom: 2px solid #ce8147;
 }
 
 /*Footer styling */
