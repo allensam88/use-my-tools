@@ -1,29 +1,29 @@
-export const dummyTools = [
+ const dummyTools = [
     {
         id: 1,
         name: 'snowblower',
-        toolImg: '',
+        toolImg: 'https://images.homedepot-static.com/productImages/1cca6541-2540-4d8f-86ab-6cd167c4347d/svn/ariens-gas-snow-blowers-921046-64_1000.jpg',
         price: 20,
         ownerId: 1
     },
     {
         id: 2,
         name: 'woodchipper',
-        toolImg: '',
+        toolImg: 'https://images-na.ssl-images-amazon.com/images/I/61JmstnzkvL._SX466_.jpg',
         price: 30,
         ownerId: 1
     },
     {
         id: 3,
         name: 'chainsaw',
-        toolImg: '',
+        toolImg: 'https://images-na.ssl-images-amazon.com/images/I/61Uz80BoGnL._SX425_.jpg',
         price: 25,
         ownerId: 1
     },
     {
         id: 4,
         name: 'axe',
-        toolImg: '',
+        toolImg: 'https://images-na.ssl-images-amazon.com/images/I/612TTL8c-wL._SX425_.jpg',
         price: 25,
         ownerId: 2
     },
@@ -252,3 +252,5 @@ export const dummyTools = [
         ownerId: 12
     }
 ]
+
+export default dummyTools;
