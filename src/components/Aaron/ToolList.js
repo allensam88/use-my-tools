@@ -7,7 +7,7 @@ const ToolList = props => {
         props.fetchTools();
     }, [])
 
-    if (!props) {
+    if (props.isFetching) {
         return (
             <p>Loading Tool List...</p>
         )
@@ -31,11 +31,11 @@ const ToolList = props => {
     }
 }
 
-    const mapStateToProps = state => {
-        return {
-            tools: state.tools,
-            isFetching: state.isFetching
-        }
+const mapStateToProps = state => {
+    return {
+        tools: state.tools,
+        isFetching: state.isFetching
     }
+}
 
 export default connect(mapStateToProps, { fetchTools })(ToolList);

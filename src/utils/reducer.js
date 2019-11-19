@@ -1,13 +1,16 @@
-import { FETCH_TOOLS_START, FETCH_TOOLS_SUCCESS, FETCH_TOOLS_FAILURE,
+import {
+    FETCH_TOOLS_START, FETCH_TOOLS_SUCCESS, FETCH_TOOLS_FAILURE,
     ADD_TOOL_START, ADD_TOOL_SUCCESS, ADD_TOOL_FAILURE,
     UPDATE_TOOL_START, UPDATE_TOOL_SUCCESS, UPDATE_TOOL_FAILURE,
     FETCH_USERS_START, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE,
     FETCH_USERID_START, FETCH_USERID_SUCCESS, FETCH_USERID_FAILURE,
-    UPDATE_USER_START, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE } from './actions';
+    UPDATE_USER_START, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE
+} from './actions';
 
 const initialState = {
     tools: [],
     users: [],
+    userProfile: {},
     isFetching: false,
     isAdding: false,
     isUpdating: false,
@@ -16,7 +19,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         //GET - fetch tools
         case FETCH_TOOLS_START:
             return {
@@ -69,7 +72,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isUpdating: false,
                 error: '',
-                userss: [...state.tools.filter(item => { return item.id !== action.payload.id}), action.payload]
+                userss: [...state.tools.filter(item => { return item.id !== action.payload.id }), action.payload]
             }
         case UPDATE_TOOL_FAILURE:
             return {
@@ -128,7 +131,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: '',
-                users: action.payload
+                userProfile: action.payload
             }
         case FETCH_USERID_FAILURE:
             return {
@@ -148,7 +151,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isUpdating: false,
                 error: '',
-                user: [...state.user.filter(item => { return item.id !== action.payload.id}), action.payload]
+                user: [...state.user.filter(item => { return item.id !== action.payload.id }), action.payload]
             }
         case UPDATE_USER_FAILURE:
             return {
