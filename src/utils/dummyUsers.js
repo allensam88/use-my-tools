@@ -5,7 +5,7 @@
 //tools -> render tool list
 //tools/${id}
 
-export const dummyUsers = [
+ const dummyUsers = [
     {
         id: 1,
         username: 'Bob',
@@ -91,3 +91,5 @@ export const dummyUsers = [
         location: 'Billings, MT',
     }
 ]
+
+export default dummyUsers;

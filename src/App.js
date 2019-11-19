@@ -3,14 +3,12 @@ import { Route } from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 import './App.css';
 import { dummyUsers } from './utils/dummyUsers';
-import PracticeCard from './components/PracticeCard';
+import ToolList from './components/Aaron/ToolList';
 
 function App() {
     return (
         <div className="App">
-        
-            <h1>App Title</h1>
-
+            <Route exact path="/" component={ToolList} />
         </div>
     );
 }
