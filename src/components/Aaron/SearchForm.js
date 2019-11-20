@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import BorrowButton from './BorrowButton';
 
 export default function SearchForm() {
     const [tools, setTools] = useState([]);
@@ -42,9 +43,7 @@ export default function SearchForm() {
                 <p>Owner: {tool.Owner} </p>
                 <p>Price: {tool.Price} </p>
                 <p>Location: {tool.Location} </p>
-                <button className="btn btn-custom" type="submit">
-                  Borrow
-                </button>
+                <BorrowButton />
               </div>
             </div>
           ))}

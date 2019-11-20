@@ -33,8 +33,10 @@ function App() {
       <PrivateRoute path="/update-tool/:id" component={UpdateTool} />
 
       <PrivateRoute path="/delete-tool/:id" component={DeleteTool} />
-
-      <Footer />
+      
+      <div className="footer-class">
+        <Footer />
+      </div>
     </div>
   );
 }
