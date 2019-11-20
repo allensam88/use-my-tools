@@ -21,9 +21,10 @@ export default function SearchForm() {
     };
 
     return (
-        <div className="tool=search">
+        <div className="tool-search">
             <form className="search">
                 <input
+                className="search-cont"
                 type="text"
                 onChange={handleInputChange}
                 value={query}
@@ -31,7 +32,23 @@ export default function SearchForm() {
                 placeholder="Search For Tools"
                 autocomplete="off" 
                 />
-            </form>     
+            </form>
+            <div className="Tools-list">
+          {tools.map(tool => (
+            <div className="card">
+              <div className="card-body">
+                {/* <img className="card-img-top" src={tool.Image} alt="tool-img" /> */}
+                <h4 className="card-title">Tool: {tool.Name}</h4>
+                <p>Owner: {tool.Owner} </p>
+                <p>Price: {tool.Price} </p>
+                <p>Location: {tool.Location} </p>
+                <button className="btn btn-custom" type="submit">
+                  Borrow
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-    )}    
+      </div>    
+    )};    
   
