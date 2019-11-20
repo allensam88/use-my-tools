@@ -20,7 +20,9 @@ function App() {
       <PrivateRoute path="/tools" component={ToolList} />
 
       <PrivateRoute path="/user/:id" component={Profile} />
-      <Footer />
+      <div className="footer-class">
+        <Footer />
+      </div>
     </div>
   );
 }
