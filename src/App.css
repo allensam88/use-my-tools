@@ -1,6 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+}
+
 .App {
   text-align: center;
-  padding-bottom: 60px;
 }
 
 .card-list {
@@ -50,5 +56,7 @@
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
