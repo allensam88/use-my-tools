@@ -56,6 +56,7 @@ const Login = props => {
         .then(res => {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('userId', res.data.id)
+            localStorage.setItem('username', res.data.username)
             props.history.push('/tools')
         })
         .catch(err => console.log(err))
