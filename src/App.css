@@ -61,6 +61,11 @@ body {
   height: 100%;
 }
 
+form {
+  margin-top: 3%;
+  margin-right: 84%;
+}
+
 input[type="text"] {
   border: 1px solid #4d7c8a;
   padding-left: 10px;

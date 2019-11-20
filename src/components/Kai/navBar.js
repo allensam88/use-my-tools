@@ -5,7 +5,6 @@ import logo from "../../img/Wht-Logo.png";
 
 const NavBar = () => {
   const userId = localStorage.getItem("userId");
-
   return (
     <nav className="navbar navbar-custom">
       <Link to="/tools">
