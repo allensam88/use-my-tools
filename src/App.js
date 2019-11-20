@@ -4,14 +4,14 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Login from "./components/Sam/Login";
 import SignUp from "./components/Sam/SignUp";
 import "./Components.css";
-import './App.css'; 
+import "./App.css";
 import NavBar from "./components/Kai/navBar";
 import ToolList from "./components/Aaron/ToolList";
 import Profile from "./components/Kai/profile";
 import UpdateUser from "./components/Sam/UpdateUser";
 import AddTool from "./components/Aaron/AddTool";
 import UpdateTool from "./components/Sam/UpdateTool";
-import DeleteTool from './components/Sam/DeleteTool';
+import DeleteTool from "./components/Sam/DeleteTool";
 import Footer from "./components/Kai/footer";
 
 function App() {
