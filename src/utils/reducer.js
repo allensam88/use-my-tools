@@ -73,7 +73,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isUpdating: false,
                 error: '',
-                userss: [...state.tools.filter(item => { return item.id !== action.payload.id }), action.payload]
+                tools: [...state.tools.filter(item => { return item.id !== action.payload.id }), action.payload]
             }
         case UPDATE_TOOL_FAILURE:
             return {
@@ -93,7 +93,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isDeleting: false,
                 error: '',
-                users: state.tools.filter(item => { return item.id !== action.payload})
+                tools: state.tools.filter(item => { return item.id !== action.payload})
             }
         case DELETE_TOOL_FAILURE:
             return {
@@ -149,11 +149,12 @@ const reducer = (state = initialState, action) => {
                 error: ''
             }
         case UPDATE_USER_SUCCESS:
+            console.log('Update Payload', action.payload);
             return {
                 ...state,
                 isUpdating: false,
                 error: '',
-                user: [...state.user.filter(item => { return item.id !== action.payload.id }), action.payload]
+                users: [...state.users.filter(item => { return item.id !== action.payload.id }), action.payload]
             }
         case UPDATE_USER_FAILURE:
             return {
