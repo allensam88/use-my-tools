@@ -55,6 +55,7 @@ const Login = props => {
         .post('/api/auth/login', credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('userId', res.data.id)
             props.history.push('/tools')
         })
         .catch(err => console.log(err))
