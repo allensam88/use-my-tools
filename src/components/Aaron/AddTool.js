@@ -61,19 +61,21 @@ const AddTool = props => {
             ownerId: userId,
             name: tool.name,
             price: tool.price,
+            toolImage: tool.toolImage
         };
         props.addTool(newTool);
         alert(`Successfully added "${tool.name}"`);
         setTool({
             name: "",
             price: "",
+            tool: ""
         });
         props.history.push(`/user/${userId}`);
     };
 
     if (props.isAdding) {
         return (
-            <p>Adding Client...</p>
+            <p>Adding Tool...</p>
         )
     } else {
 
@@ -96,6 +98,14 @@ const AddTool = props => {
                         placeholder="price"
                         onChange={handleChanges}
                         value={tool.price}
+                        autoComplete="off"
+                    />
+                    <OtherInput
+                        id="toolImage"
+                        name="toolImage"
+                        placeholder="image"
+                        onChange={handleChanges}
+                        value={tool.toolImage}
                         autoComplete="off"
                     />
                     <Button type="submit">Add Tool</Button>
