@@ -5,15 +5,17 @@ import logo from "../../img/Wht-Logo.png";
 
 
 const NavBar = () => {
-  return (
+    const userId = localStorage.getItem('userId');
+
+    return (
     <nav className="navbar navbar-custom">
       <img src={logo} alt={"logo"} />
       <ul className="nav">
         <li className="nav-item">
-          <Link to="/toolList" className="nav-link">Link</Link>
+          <Link to="/tools" className="nav-link">Tool List</Link>
         </li>
         <li className="nav-item">
-          <Link to="/profile">
+          <Link to={`/user/${userId}`} >
             <a className="nav-link" href="#">
               Profile
             </a>
