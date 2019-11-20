@@ -1,6 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+}
+
 .App {
   text-align: center;
-  padding-bottom: 60px;
 }
 
 .card-list {
@@ -55,17 +61,29 @@
   height: 100%;
 }
 
-
 form {
   margin-top: 3%;
   margin-right: 84%;
 }
 
-input[type=text] {
+input[type="text"] {
   border: 1px solid #4d7c8a;
   padding-left: 10px;
   outline: none;
   color: #4d7c8a;
 }
 
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
 
+.search-form i {
+  background: #4d7c8a;
+  padding: 6px;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}

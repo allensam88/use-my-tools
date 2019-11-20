@@ -8,7 +8,6 @@
   padding-left: 2em 1em;
   margin: 4px, auto;
 }
-
 .nav-link {
   color: white;
   text-decoration: none;
@@ -33,9 +32,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   color: #fff;
-  position: absolute;
   left: 0;
   bottom: 0;
   right: 0;
+  flex-shrink: 0;
 }
