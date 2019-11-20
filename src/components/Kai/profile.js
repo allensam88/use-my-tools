@@ -45,10 +45,14 @@ const Profile = props => {
                 <div>
                     <h1>{userProfile.user.username}</h1>
                     <h2>{userProfile.user.location}</h2>
+                    <button onClick={() => props.history.push(`/update-user/${userProfile.id}`)}>update profile</button>
+                    <button onClick={() => props.history.push(`/add-tool`)}>add tool</button>
                     {userProfile.tools.map((tool) => {
                         return <div key={tool.id}>
                             <p>{tool.name}</p>
                             <p>{tool.price}</p>
+                            <button onClick={() => props.history.push(`/update-tool/${tool.id}`)}>update</button>
+                            <button onClick={() => props.history.push(`/delete-tool/${tool.id}`)}>delete</button>
                         </div>})}
                 </div>
             </div>

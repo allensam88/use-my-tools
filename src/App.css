@@ -22,7 +22,7 @@ body {
   background-color: #4d7c8a;
   color: white;
   border-color: #454851;
-  box-shadow: 3px 3px 5px gray;
+  box-shadow: 3px 3px 5px #4d7c8a;
   transition: 600ms;
 }
 
@@ -59,4 +59,15 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+form {
+  margin-top: 3%;
+  margin-right: 84%;
+}
+
+input[type="text"] {
+  border: 1px solid #4d7c8a;
+  padding-left: 10px;
+  outline: none;
+  color: #4d7c8a;
 }
