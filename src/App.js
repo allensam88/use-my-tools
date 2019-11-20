@@ -13,7 +13,6 @@ import DeleteTool from './components/Sam/DeleteTool';
 import Footer from "./components/Kai/footer";
 
 function App() {
-
   return (
     <div className="App">
       <NavBar />

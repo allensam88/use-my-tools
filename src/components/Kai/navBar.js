@@ -3,7 +3,6 @@ import "../../Components.css";
 import { Link } from "react-router-dom";
 import logo from "../../img/Wht-Logo.png";
 
-
 const NavBar = () => {
     const userId = localStorage.getItem('userId');
 
@@ -12,13 +11,13 @@ const NavBar = () => {
       <img src={logo} alt={"logo"} />
       <ul className="nav">
         <li className="nav-item">
-          <Link to="/tools" className="nav-link">Tool List</Link>
+          <Link className="nav-link" to="/tools" className="nav-link">
+            Tools
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to={`/user/${userId}`} >
-            <a className="nav-link" href="#">
-              Profile
-            </a>
+          <Link className="nav-link" to={`/user/${userId}`}>
+            Profile
           </Link>
         </li>
       </ul>
