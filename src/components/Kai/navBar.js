@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import logo from "../../img/Wht-Logo.png";
 
 const NavBar = () => {
-  return (
+    const userId = localStorage.getItem('userId');
+
+    return (
     <nav className="navbar navbar-custom">
       <img src={logo} alt={"logo"} />
       <ul className="nav">
@@ -14,7 +16,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/profile">
+          <Link className="nav-link" to={`/user/${userId}`}>
             Profile
           </Link>
         </li>
