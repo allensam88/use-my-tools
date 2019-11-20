@@ -32,6 +32,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   color: #fff;
   left: 0;
   bottom: 0;
