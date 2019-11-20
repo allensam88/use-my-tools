@@ -16,9 +16,9 @@ export const UPDATE_TOOL_SUCCESS = 'UPDATE_SUCCESS';
 export const UPDATE_TOOL_FAILURE = 'UPDATE_FAILURE';
 
 //DELETE /tools/delete/:id endpoint not built yet
-// export const DELETE_TOOL_START = 'DELETE_START';
-// export const DELETE_TOOL_SUCCESS = 'DELETE_SUCCESS';
-// export const DELETE_TOOL_FAILURE ='DELETE_FAILURE';
+export const DELETE_TOOL_START = 'DELETE_START';
+export const DELETE_TOOL_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_TOOL_FAILURE ='DELETE_FAILURE';
 
 //GET /users
 export const FETCH_USERS_START = "FETCH_USERS_START";
@@ -62,24 +62,24 @@ export const addTool = newTool => dispatch => {
 }
 
 //PUT https://use-my-tool.herokuapp.com/tools/update/:id
-export const updateTool = updatedTool => dispatch => {
+export const updateTool = (updatedTool, id) => dispatch => {
     dispatch({ type: UPDATE_TOOL_START });
 
     AxiosWithAuth()
-    .put(`/tools/update/${updatedTool.id}`, updatedTool)
+    .put(`/tools/update/${id}`, updatedTool)
     .then(res => dispatch({ type: UPDATE_TOOL_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: UPDATE_TOOL_FAILURE, payload: err }));
 }
 
 //DELETE tool endpoint not built yet.
-// export const deleteTool = deletedTool => dispatch => {
-//     dispatch({ type: DELETE_TOOL_START });
+export const deleteTool = id => dispatch => {
+    dispatch({ type: DELETE_TOOL_START });
 
-//     AxiosWithAuth()
-//     .delete(`/empty/${deletedTool.id}`)
-//     .then(res => dispatch({ type: DELETE_TOOL_SUCCESS, payload: object.id }))
-//     .catch(err => dispatch({ type: DELETE_TOOL_FAILURE, payload: err }))
-// }
+    AxiosWithAuth()
+    .delete(`/tools/${id}`)
+    .then(res => dispatch({ type: DELETE_TOOL_SUCCESS, payload: id }))
+    .catch(err => dispatch({ type: DELETE_TOOL_FAILURE, payload: err }))
+}
 
 /***USER ACTIONS***/
 //GET https://use-my-tool.herokuapp.com/users

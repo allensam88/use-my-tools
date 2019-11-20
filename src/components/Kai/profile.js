@@ -49,6 +49,8 @@ const Profile = props => {
                         return <div key={tool.id}>
                             <p>{tool.name}</p>
                             <p>{tool.price}</p>
+                            <button onClick={() => props.history.push(`/update-tool/${tool.id}`)}>update</button>
+                            <button onClick={() => props.history.push(`/delete-tool/${tool.id}`)}>delete</button>
                         </div>})}
                 </div>
             </div>

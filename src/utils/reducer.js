@@ -2,6 +2,7 @@ import {
     FETCH_TOOLS_START, FETCH_TOOLS_SUCCESS, FETCH_TOOLS_FAILURE,
     ADD_TOOL_START, ADD_TOOL_SUCCESS, ADD_TOOL_FAILURE,
     UPDATE_TOOL_START, UPDATE_TOOL_SUCCESS, UPDATE_TOOL_FAILURE,
+    DELETE_TOOL_START, DELETE_TOOL_SUCCESS, DELETE_TOOL_FAILURE,
     FETCH_USERS_START, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE,
     FETCH_USERID_START, FETCH_USERID_SUCCESS, FETCH_USERID_FAILURE,
     UPDATE_USER_START, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE
@@ -80,25 +81,26 @@ const reducer = (state = initialState, action) => {
                 error: action.payload,
                 isUpdating: false
             }
-        // case DELETE_TOOL_START:
-        //     return {
-        //         ...state,
-        //         isDeleting: true,
-        //         error: ''
-        //     }
-        // case DELETE_TOOL_SUCCESS:
-        //     return {
-        //         ...state,
-        //         isDeleting: false,
-        //         error: '',
-        //         users: state.tools.filter(item => { return item.id !== action.payload})
-        //     }
-        // case DELETE_TOOL_FAILURE:
-        //     return {
-        //         ...state,
-        //         error: action.payload,
-        //         isDeleting: false
-        //     }
+        //DELETE - delete a tool
+        case DELETE_TOOL_START:
+            return {
+                ...state,
+                isDeleting: true,
+                error: ''
+            }
+        case DELETE_TOOL_SUCCESS:
+            return {
+                ...state,
+                isDeleting: false,
+                error: '',
+                users: state.tools.filter(item => { return item.id !== action.payload})
+            }
+        case DELETE_TOOL_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isDeleting: false
+            }
         //GET - fetch all users
         case FETCH_USERS_START:
             return {
