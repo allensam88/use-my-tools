@@ -103,11 +103,11 @@ export const fetchUserById = id => dispatch => {
 }
 
 //PUT https://use-my-tool.herokuapp.com/users/:id
-export const updateUser = updatedUser => dispatch => {
+export const updateUser = (updatedUser, id) => dispatch => {
     dispatch({ type: UPDATE_USER_START });
 
     AxiosWithAuth()
-    .put(`/users/${updatedUser.id}`, updatedUser)
+    .put(`/users/${id}`, updatedUser)
     .then(res => dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: UPDATE_USER_FAILURE, payload: err }));
 }

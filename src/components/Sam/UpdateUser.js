@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AxiosWithAuth from '../../utils/AxiosWithAuth';
 import { connect } from 'react-redux';
-import { fetchTools, updateTool } from '../../utils/actions';
+import { updateUser } from '../../utils/actions';
 import styled from 'styled-components';
 
 const StyledForm = styled.form`
@@ -71,56 +71,51 @@ const ReturnButton = styled.button`
     }
 `
 
-const UpdateTool = props => {
-    const [tool, setTool] = useState({
-        id: '',
-        Name: '',
-        Price: '',
-        Image: '',
-        Owner: '',
-        Location: ''
+const UpdateUser = props => {
+    const [userToUpdate, setUserToUpdate] = useState({
+        // id: '',
+        // Username: '',
+        // Location: ''
     })
 
     const userId = localStorage.getItem('userId');
-    const toolId = props.match.params.id;
 
     useEffect(() => {
         AxiosWithAuth()
-        .get(`/tools`)
+        .get(`/users/${userId}`)
         .then(res => {
-            const findTool = res.data.find((item) => (item.id === Number(toolId)))
-            console.log('Find Tool', findTool);
-            setTool(findTool);
+            console.log('Response', res.data.user);
+            setUserToUpdate(res.data.user);
         })
     }, [])
     
     const handleChanges = e => {
-        setTool({ ...tool, [e.target.name]: e.target.value });
+        setUserToUpdate({ ...userToUpdate, [e.target.name]: e.target.value });
     }
 
     const submitChanges = e => {
-        const updatedTool = {
-            name: tool.Name,
-            price: tool.Price
+        const updatedUser = {
+            name: userToUpdate.username,
+            location: userToUpdate.location
         }
         e.preventDefault();
-        props.updateTool(updatedTool, toolId);
-        alert(`Updated information for ${tool.Name}`);
+        props.updateUser(updatedUser, userToUpdate.id);
+        alert(`Updated information for ${userToUpdate.username}`);
         props.history.push(`/user/${userId}`)
     }
 
-    if (!tool) {
+    if (!userToUpdate) {
         return (
-            <p>Updating Tool Information...</p>
+            <p>Updating User Information...</p>
         )
     } else {
         return (
             <div>
                 <StyledForm onSubmit={submitChanges}>
-                    <TopLabel>Name:</TopLabel>
-                    <NameInput type="text" name="Name" value={tool.Name} onChange={handleChanges} />
-                    <Label>Price:</Label>
-                    <OtherInput type="text" name="Price" value={tool.Price} onChange={handleChanges} />
+                    <TopLabel>User Name:</TopLabel>
+                    <NameInput type="text" name="username" value={userToUpdate.username} onChange={handleChanges} />
+                    <Label>Location:</Label>
+                    <OtherInput type="text" name="location" value={userToUpdate.location} onChange={handleChanges} />
                     <Button>Update</Button>
                     <ReturnButton onClick={() => props.history.push(`/user/${userId}`)}>Return To Profile</ReturnButton>
                 </StyledForm>
@@ -131,9 +126,8 @@ const UpdateTool = props => {
 
 const mapStateToProps = state => {
     return {
-        tools: state.tools,
         isUpdating: state.isUpdating
     }
 }
 
-export default connect(mapStateToProps, { fetchTools, updateTool })(UpdateTool);
+export default connect(mapStateToProps, { updateUser })(UpdateUser);

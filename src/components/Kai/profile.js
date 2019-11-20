@@ -45,6 +45,8 @@ const Profile = props => {
                 <div>
                     <h1>{userProfile.user.username}</h1>
                     <h2>{userProfile.user.location}</h2>
+                    <button onClick={() => props.history.push(`/update-user/${userProfile.id}`)}>update profile</button>
+                    <button onClick={() => props.history.push(`/add-tool`)}>add tool</button>
                     {userProfile.tools.map((tool) => {
                         return <div key={tool.id}>
                             <p>{tool.name}</p>
