@@ -1,6 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+}
+
 .App {
   text-align: center;
-  padding-bottom: 60px;
 }
 
 .card-list {
@@ -49,6 +55,12 @@
   margin-top: 5%;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 form {
   margin-top: 3%;
   margin-right: 84%;
@@ -60,5 +72,3 @@ input[type=text] {
   outline: none;
   color: #4d7c8a;
 }
-
-
