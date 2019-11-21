@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { updateTool } from "../utils/actions";
+import { updateTool, fetchTools } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 
 const Profile = props => {
@@ -27,6 +27,7 @@ const Profile = props => {
         props.updateTool(updateBorrowedTool, id)
             .then(() => {
                 setTrigger(!trigger);
+                props.fetchTools();
             })
     }
 
@@ -88,4 +89,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { updateTool })(Profile);
+export default connect(mapStateToProps, { updateTool, fetchTools })(Profile);
