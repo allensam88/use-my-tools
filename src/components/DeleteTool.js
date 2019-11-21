@@ -16,10 +16,11 @@ const YouSure = styled.p`
 const Span = styled.span`
   font-weight: bold;
   font-style: italic;
+  color: #4d7c8a;
 `;
 
 const YesButton = styled.button`
-  width: 14rem;
+  width: 12rem;
   height: 3rem;
   margin: 2rem 0;
   border-radius: 5px;
@@ -35,19 +36,19 @@ const YesButton = styled.button`
   }
 `;
 const NoButton = styled.button`
-  width: 14rem;
+  width: 12rem;
   height: 3rem;
   margin: 1rem 0;
   border-radius: 5px;
-  background: #73a85a;
+  background: #454851;
   color: white;
   font-size: 1rem;
   font-weight: bold;
 
   :hover {
-    background: white;
-    color: #73a85a;
-    border: 1px solid #73a85a;
+    background: #4d7c8a;
+    color: white;
+    border: 1px solid #4d7c8a;
   }
 `;
 
@@ -73,8 +74,8 @@ const DeleteTool = props => {
         <YouSure>
           Are you sure you want to <Span>permanently</Span> delete this tool?
         </YouSure>
-        <YesButton onClick={handleSubmit}>{`Yes. Delete`}</YesButton>
-        <NoButton onClick={goBack}>No. Return to profile.</NoButton>
+        <YesButton onClick={handleSubmit}>{`Delete`}</YesButton>
+        <NoButton onClick={goBack}>No, return to profile</NoButton>
       </Div>
     );
   }
