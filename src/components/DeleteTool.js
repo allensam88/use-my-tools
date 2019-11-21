@@ -33,6 +33,11 @@ const YesButton = styled.button`
     background: white;
     color: red;
     border: 1px solid red;
+    box-shadow: 8px 8px rgba(255, 0, 0, 0.8);
+    transition: 0.3s;
+  }
+  focus: {
+    outline: 0;
   }
 `;
 const NoButton = styled.button`
@@ -49,6 +54,11 @@ const NoButton = styled.button`
     background: #4d7c8a;
     color: white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+  :focus {
+    outline: none;
   }
 `;
 
