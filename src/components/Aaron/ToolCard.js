@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import "../../App.css" 
+import {connect} from 'react-redux';
+import {updateTool} from '../../utils/actions';
 
 const ToolCard = props => {
 
@@ -14,6 +17,7 @@ const ToolCard = props => {
     return (
         <div className="card">
             <div className="card-body">
+                {/* <img src={props.Image} alt="tool-img"/> */}
                 <h4 className="card-title">Tool: {props.Name}</h4>
                 <p>Owner: {props.Owner} </p>
                 <p>Price: {props.Price} </p>
@@ -37,5 +41,11 @@ const ToolCard = props => {
         </div>
     )
 }
+const mapStateToProps = state => {
+    return {
 
-export default ToolCard;
+        isUpdating: state.isUpdating
+    }
+}
+
+export default connect(mapStateToProps, { updateTool })(ToolCard);
