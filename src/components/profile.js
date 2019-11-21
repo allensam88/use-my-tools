@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchUserById } from "../utils/actions";
+import { fetchUserById, updateTool } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
 
@@ -20,65 +20,89 @@ const ProfileInfo = styled.div`
 `;
 
 const Profile = props => {
-  const [userProfile, setUserProfile] = useState(null);
+    const [userProfile, setUserProfile] = useState(null);
 
-  useEffect(() => {
-    const id = props.match.params.id;
-    AxiosWithAuth()
-      .get(`/users/${id}`)
-      .then(res => {
-        console.log("user", res.data);
-        setUserProfile(res.data);
-      })
-      .catch(err => console.log(err));
-  }, []);
+    useEffect(() => {
+        const id = props.match.params.id;
+        AxiosWithAuth()
+            .get(`/users/${id}`)
+            .then(res => {
+                console.log("user", res.data);
+                setUserProfile(res.data);
+            })
+            .catch(err => console.log(err));
+    }, []);
 
-  if (!userProfile) {
-    return <p>Loading User Profile...</p>;
-  } else {
-    return (
-      <div>
-        <i className="fas fa-user-circle fa-10x" />
-        <div>
-          <h1>{userProfile.user.username}</h1>
-          <h2>{userProfile.user.location}</h2>
-          <button
-            onClick={() => props.history.push(`/update-user/${userProfile.id}`)}
-          >
-            update profile
-          </button>
-          <button onClick={() => props.history.push(`/add-tool`)}>
-            add tool
-          </button>
-          {userProfile.tools.map(tool => {
-            return (
-              <div key={tool.id}>
-                <p>{tool.name}</p>
-                <p>${tool.price} /hr</p>
+    const returnTool = (id) => {
+        const updateBorrowedTool = {
+            borrowed: 0,
+            borrowed_to: ""
+        };
+        console.log("updated tool", updateBorrowedTool);
+        props.updateTool(updateBorrowedTool, id);
+    }
+
+    if (!userProfile) {
+        return <p>Loading User Profile...</p>;
+    } else {
+        return (
+            <div>
+                <i className="fas fa-user-circle fa-10x" />
+                <h1>{userProfile.user.username}</h1>
+                <h2>{userProfile.user.location}</h2>
                 <button
-                  onClick={() => props.history.push(`/update-tool/${tool.id}`)}
-                >
-                  update
+                    onClick={() => props.history.push(`/update-user/${userProfile.id}`)}>
+                    update profile
                 </button>
-                <button
-                  onClick={() => props.history.push(`/delete-tool/${tool.id}`)}
-                >
-                  delete
+                <button onClick={() => props.history.push(`/add-tool`)}>
+                    add tool
                 </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
+                <div className="card-list">
+                    {userProfile.tools.map(tool => {
+                        return (
+                            <div key={tool.id} className="card">
+                                <img src={tool.toolImg} alt="tool" className="card-image" />
+                                <p>{tool.name}</p>
+                                <p>${tool.price} /hr</p>
+                                
+                                {tool.borrowed === 1 && (
+                                    <div>
+                                        <p>Loaned to: {tool.borrowed_to}</p>
+                                        <button
+                                            onClick={() => returnTool(tool.id)}
+                                            className="btn btn-custom"
+                                            type="submit">
+                                            Return Tool
+                                        </button>
+                                    </div>
+                                )}
+                                
+                                
+                                
+                                
+                                
+                                <button
+                                    onClick={() => props.history.push(`/update-tool/${tool.id}`)}>
+                                        update
+                                </button>
+                                <button
+                                    onClick={() => props.history.push(`/delete-tool/${tool.id}`)}>
+                                        delete
+                                </button>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        );
+    }
 };
 
 const mapStateToProps = state => {
-  return {
-    userProfile: state.userProfile,
-    isFetching: state.isFetching
-  };
+    return {
+        userProfile: state.userProfile,
+        isFetching: state.isFetching
+    };
 };
 
-export default connect(mapStateToProps, { fetchUserById })(Profile);
+export default connect(mapStateToProps, { fetchUserById, updateTool })(Profile);

@@ -17,7 +17,7 @@ body {
 }
 
 .card {
-  width: 16%;
+  width: 20%;
   margin: 30px;
   border-radius: 25px;
   background-color: #4d7c8a;
@@ -26,6 +26,18 @@ body {
   box-shadow: 3px 3px 5px #4d7c8a;
   transition: 600ms;
 }
+
+.card-img-top {
+    border-radius: 20px;
+    border: 1px solid #454851;
+  }
+  
+  .card-image {
+      max-width: 90%;
+      margin-bottom: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+  }
 
 .card:hover {
   cursor: default;
@@ -37,6 +49,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn-custom {
@@ -44,11 +57,6 @@ body {
   background-color: #454851;
   border-radius: 20px;
   width: 150px;
-}
-
-.card-img-top {
-  border-radius: 20px;
-  border: 1px solid #454851;
 }
 
 .search-div {
