@@ -12,7 +12,10 @@ const ToolCard = props => {
             borrowed_to: localStorage.getItem("username")
         };
         console.log("updated tool", updateBorrowedTool);
-        props.updateTool(updateBorrowedTool, id);
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                window.location.reload();
+            })
     };
 
     return (
@@ -25,7 +28,7 @@ const ToolCard = props => {
                 <p>Location: {Location} </p>
                 {Borrowed === 0 && (
                     <button
-                        onClick={() => borrowTool()}
+                        onClick={() => borrowTool(Borrowed)}
                         className="btn btn-custom"
                         type="submit">
                         Borrow
@@ -33,7 +36,6 @@ const ToolCard = props => {
                 )}
                 {Borrowed === 1 && (
                     <button
-                        onClick={() => borrowTool()}
                         className="btn btn-custom"
                         type="submit"
                         disabled>
