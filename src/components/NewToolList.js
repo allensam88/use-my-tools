@@ -1,22 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import ToolCard from './ToolCard';
+import { fetchTools } from '../utils/actions';
 
 
 const NewToolList = (props) => {
     const [tools, setTools] = useState([]);
     const [query, setQuery] = useState("");
 
-    useEffect(() => {
+    const refresh = () => {
         axios.get(`https://use-my-tool.herokuapp.com/tools`)
-        .then(res => {
-            console.log(res.data);
-            const search = res.data.filter(tool =>
-                tool.Name.toLowerCase().includes(query.toLowerCase())
-            );
-            setTools(search);
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                console.log(res.data);
+                const search = res.data.filter(tool =>
+                    tool.Name.toLowerCase().includes(query.toLowerCase())
+                );
+                setTools(search);
+            })
+            .catch(err => console.log(err));
+    }
+
+    useEffect(() => {
+        refresh();
+        // if(tools.length === 0) {
+        //     props.fetchTools();
+        // }
+        // console.log('useEffect');
+        // setTools(props.tools)
     }, [query])
 
     const handleInputChange = event => {
@@ -42,16 +53,23 @@ const NewToolList = (props) => {
             <div className='Tools-list'>
                 {tools.map(data => {
                     return (
-                        <ToolCard 
-                        key={data.id}
-                        data={data}
+                        <ToolCard
+                            key={data.id}
+                            data={data}
                         />
                     )
                 })}
             </div>
         </div>
-    )}
-
-    
+    )
+}
 
 export default NewToolList;
+
+// const mapStateToProps = state => {
+//     return {
+//         tools: state.tools
+//     };
+// };
+
+// export default connect(mapStateToProps, { fetchTools })(NewToolList);

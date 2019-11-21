@@ -65,7 +65,7 @@ export const addTool = newTool => dispatch => {
 export const updateTool = (updatedTool, id) => dispatch => {
     dispatch({ type: UPDATE_TOOL_START });
 
-    AxiosWithAuth()
+    return AxiosWithAuth()
     .put(`/tools/update/${id}`, updatedTool)
     .then(res => dispatch({ type: UPDATE_TOOL_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: UPDATE_TOOL_FAILURE, payload: err }));

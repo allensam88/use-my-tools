@@ -39,7 +39,10 @@ const Profile = props => {
             borrowed_to: ""
         };
         console.log("updated tool", updateBorrowedTool);
-        props.updateTool(updateBorrowedTool, id);
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                window.location.reload();
+            })
     }
 
     if (!userProfile) {
@@ -64,7 +67,7 @@ const Profile = props => {
                                 <img src={tool.toolImg} alt="tool" className="card-image" />
                                 <p>{tool.name}</p>
                                 <p>${tool.price} /hr</p>
-                                
+
                                 {tool.borrowed === 1 && (
                                     <div>
                                         <p>Loaned to: {tool.borrowed_to}</p>
@@ -76,18 +79,18 @@ const Profile = props => {
                                         </button>
                                     </div>
                                 )}
-                                
-                                
-                                
-                                
-                                
+
+
+
+
+
                                 <button
                                     onClick={() => props.history.push(`/update-tool/${tool.id}`)}>
-                                        update
+                                    update
                                 </button>
                                 <button
                                     onClick={() => props.history.push(`/delete-tool/${tool.id}`)}>
-                                        delete
+                                    delete
                                 </button>
                             </div>
                         );
