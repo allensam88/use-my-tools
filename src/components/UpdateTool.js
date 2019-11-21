@@ -108,7 +108,7 @@ const UpdateTool = props => {
         };
         e.preventDefault();
         props.updateTool(updatedTool, toolId);
-        alert(`Updated information for ${tool.name}`);
+        alert(`Updated information for ${updatedTool.name}`);
         props.history.push(`/user/${userId}`);
     };
 
