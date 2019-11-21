@@ -33,7 +33,7 @@ const ToolCard = props => {
                         onClick={borrowTool}
                         className="btn btn-custom">
                         Borrow
-          </button>
+                    </button>
                 )}
                 {Borrowed === 1 && (
                     <button

@@ -31,10 +31,12 @@ const OtherInput = styled.input`
 const TopLabel = styled.label`
   margin-top: 1rem;
   font-size: 1.5rem;
+  color: #454851;
 `;
 
 const Label = styled.label`
   font-size: 1.5rem;
+  color: #454851;
 `;
 
 const Button = styled.button`
@@ -42,15 +44,15 @@ const Button = styled.button`
   height: 3rem;
   margin: 3rem 0;
   border-radius: 5px;
-  background: #73a85a;
+  background: #454851;
   color: white;
   font-size: 1rem;
   font-weight: bold;
 
   :hover {
-    background: white;
-    color: #73a85a;
-    border: 1px solid #73a85a;
+    background: #4d7c8a;
+    color: white;
+    border: 1px solid #4d7c8a;
   }
 `;
 
@@ -59,15 +61,15 @@ const ReturnButton = styled.button`
   height: 3rem;
   margin-bottom: 3rem;
   border-radius: 5px;
-  background: #73a85a;
+  background: #454851;
   color: white;
   font-size: 1rem;
   font-weight: bold;
 
   :hover {
-    background: white;
-    color: #73a85a;
-    border: 1px solid #73a85a;
+    background: #4d7c8a;
+    color: white;
+    border: 1px solid #4d7c8a;
   }
 `;
 
