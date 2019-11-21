@@ -47,7 +47,9 @@ export const fetchTools = () => dispatch => {
 
     AxiosWithAuth()
     .get('/tools')
-    .then(res => dispatch({ type: FETCH_TOOLS_SUCCESS, payload: res.data }))
+    .then(res => {
+        console.log('res.data', res.data);
+        dispatch({ type: FETCH_TOOLS_SUCCESS, payload: res.data })})
     .catch(err => dispatch({ type: FETCH_TOOLS_FAILURE, payload: err }));
 }
 
@@ -57,17 +59,20 @@ export const addTool = newTool => dispatch => {
 
     AxiosWithAuth()
     .post('/tools', newTool)
-    .then(res => dispatch({ type: ADD_TOOL_SUCCESS, payload: res.data }))
+    .then(res => 
+        dispatch({ type: ADD_TOOL_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: ADD_TOOL_FAILURE, payload: err }));
 }
 
 //PUT https://use-my-tool.herokuapp.com/tools/update/:id
 export const updateTool = (updatedTool, id) => dispatch => {
     dispatch({ type: UPDATE_TOOL_START });
-
+    
     return AxiosWithAuth()
     .put(`/tools/update/${id}`, updatedTool)
-    .then(res => dispatch({ type: UPDATE_TOOL_SUCCESS, payload: res.data }))
+    .then(res => {
+        console.log('Action res', res);
+        dispatch({ type: UPDATE_TOOL_SUCCESS, payload: res.data })})
     .catch(err => dispatch({ type: UPDATE_TOOL_FAILURE, payload: err }));
 }
 
@@ -98,7 +103,9 @@ export const fetchUserById = id => dispatch => {
 
     AxiosWithAuth()
     .get(`/users/${id}`)
-    .then(res => dispatch({ type: FETCH_USERID_SUCCESS, payload: res.data }))
+    .then(res => {
+        console.log('User', res.data);
+        dispatch({ type: FETCH_USERID_SUCCESS, payload: res.data })})
     .catch(err => dispatch({ type: FETCH_USERID_FAILURE, payload: err }));
 }
 

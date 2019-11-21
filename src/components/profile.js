@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchUserById, updateTool } from "../utils/actions";
+import { updateTool } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
-import styled from "styled-components";
-
-const ProfileInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  .userinfo {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  i {
-    width: 10rem;
-  }
-`;
 
 const Profile = props => {
     const [userProfile, setUserProfile] = useState(null);
+    const [trigger, setTrigger] = useState(false);
 
     useEffect(() => {
         const id = props.match.params.id;
@@ -31,7 +16,7 @@ const Profile = props => {
                 setUserProfile(res.data);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [trigger]);
 
     const returnTool = (id) => {
         const updateBorrowedTool = {
@@ -41,7 +26,7 @@ const Profile = props => {
         console.log("updated tool", updateBorrowedTool);
         props.updateTool(updateBorrowedTool, id)
             .then(() => {
-                window.location.reload();
+                setTrigger(!trigger);
             })
     }
 
@@ -79,11 +64,6 @@ const Profile = props => {
                                         </button>
                                     </div>
                                 )}
-
-
-
-
-
                                 <button
                                     onClick={() => props.history.push(`/update-tool/${tool.id}`)}>
                                     update
@@ -108,4 +88,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { fetchUserById, updateTool })(Profile);
+export default connect(mapStateToProps, { updateTool })(Profile);
