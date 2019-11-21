@@ -1,18 +1,18 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
-import Login from "./components/Sam/Login";
-import SignUp from "./components/Sam/SignUp";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import "./Components.css";
 import "./App.css";
-import NavBar from "./components/Kai/navBar";
-import NewToolList from "./components/Aaron/NewToolList";
-import Profile from "./components/Kai/profile";
-import UpdateUser from "./components/Sam/UpdateUser";
-import AddTool from "./components/Aaron/AddTool";
-import UpdateTool from "./components/Sam/UpdateTool";
-import DeleteTool from "./components/Sam/DeleteTool";
-import Footer from "./components/Kai/footer";
+import NavBar from "./components/navBar";
+import NewToolList from "./components/NewToolList";
+import Profile from "./components/profile";
+import UpdateUser from "./components/UpdateUser";
+import AddTool from "./components/AddTool";
+import UpdateTool from "./components/UpdateTool";
+import DeleteTool from "./components/DeleteTool";
+import Footer from "./components/footer";
 
 function App() {
   return (
