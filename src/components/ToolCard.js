@@ -32,7 +32,7 @@ const ToolCard = props => {
                         className="btn btn-custom"
                         type="submit">
                         Borrow
-          </button>
+                    </button>
                 )}
                 {Borrowed === 1 && (
                     <button
