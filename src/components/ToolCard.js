@@ -12,12 +12,10 @@ const ToolCard = props => {
             borrowed: 1,
             borrowed_to: localStorage.getItem("username")
         };
-        console.log("updated tool", updateBorrowedTool);
         props.updateTool(updateBorrowedTool, id)
             .then(() => {
                 props.fetchTools();
             })
-        console.log('Borrowed', Borrowed);
     };
 
     return (

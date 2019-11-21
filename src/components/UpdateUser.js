@@ -85,15 +85,12 @@ const UpdateUser = props => {
     AxiosWithAuth()
       .get(`/users/${userId}`)
       .then(res => {
-        console.log("Response", res.data.user);
         setUserToUpdate(res.data.user);
       });
-  }, []);
+  }, [userId]);
 
   const handleChanges = e => {
     setUserToUpdate({ ...userToUpdate, [e.target.name]: e.target.value });
-    console.log("Target Name", e.target.name);
-    console.log("Target Value", e.target.value);
   };
 
   const submitChanges = e => {
@@ -102,8 +99,6 @@ const UpdateUser = props => {
       username: userToUpdate.username,
       location: userToUpdate.location
     };
-    console.log("Updated User", updatedUser);
-    console.log("user id", userId);
     props.updateUser(updatedUser, userId);
     alert(`Updated information for ${userToUpdate.username}`);
     props.history.push(`/user/${userId}`);

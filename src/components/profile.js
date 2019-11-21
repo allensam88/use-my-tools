@@ -41,11 +41,10 @@ const Profile = props => {
         AxiosWithAuth()
             .get(`/users/${id}`)
             .then(res => {
-                console.log("user", res.data);
                 setUserProfile(res.data);
             })
             .catch(err => console.log(err));
-    }, [trigger]);
+    }, [trigger, props.match.params.id]);
 
     const returnTool = (id) => {
         const updateBorrowedTool = {
