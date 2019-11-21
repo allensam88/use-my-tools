@@ -18,11 +18,18 @@ const Button = styled.button`
   color: white;
   font-size: 1rem;
   font-weight: bold;
+  transition: 0.3s;
 
   :hover {
     background:#4d7c8a ;
     color: white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 

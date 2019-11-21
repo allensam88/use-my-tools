@@ -49,10 +49,17 @@ const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
 
+
   :hover {
     background: #4d7c8a;
     color: #white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -70,6 +77,12 @@ const ReturnButton = styled.button`
     background: #4d7c8a;
     color: #white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
