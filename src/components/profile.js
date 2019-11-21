@@ -88,19 +88,18 @@ const Profile = props => {
                 <img src={tool.toolImg} alt="tool" className="card-image" />
                 <p>{tool.name}</p>
                 <p>${tool.price} /hr</p>
+    const returnTool = (id) => {
+        const updateBorrowedTool = {
+            borrowed: 0,
+            borrowed_to: ""
+        };
+        console.log("updated tool", updateBorrowedTool);
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                window.location.reload();
+            })
+    }
 
-                {tool.borrowed === 1 && (
-                  <div>
-                    <p>Loaned to: {tool.borrowed_to}</p>
-                    <button
-                      onClick={() => returnTool(tool.id)}
-                      className="btn btn-custom"
-                      type="submit"
-                    >
-                      Return Tool
-                    </button>
-                  </div>
-                )}
 
                 <button
                   onClick={() => props.history.push(`/update-tool/${tool.id}`)}
@@ -112,13 +111,45 @@ const Profile = props => {
                 >
                   delete
                 </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  }
+                <div className="card-list">
+                    {userProfile.tools.map(tool => {
+                        return (
+                            <div key={tool.id} className="card">
+                                <img src={tool.toolImg} alt="tool" className="card-image" />
+                                <p>{tool.name}</p>
+                                <p>${tool.price} /hr</p>
+
+                                {tool.borrowed === 1 && (
+                                    <div>
+                                        <p>Loaned to: {tool.borrowed_to}</p>
+                                        <button
+                                            onClick={() => returnTool(tool.id)}
+                                            className="btn btn-custom"
+                                            type="submit">
+                                            Return Tool
+                                        </button>
+                                    </div>
+                                )}
+
+
+
+
+
+                                <button
+                                    onClick={() => props.history.push(`/update-tool/${tool.id}`)}>
+                                    update
+                                </button>
+                                <button
+                                    onClick={() => props.history.push(`/delete-tool/${tool.id}`)}>
+                                    delete
+                                </button>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        );
+    }
 };
 
 const mapStateToProps = state => {
