@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchTools } from '../../utils/actions';
 import SearchForm from './SearchForm';
+import ToolCard from './ToolCard';
 
 
 
@@ -17,7 +18,7 @@ const ToolList = props => {
     } else {
         return (
                 <div>
-                    <SearchForm />
+                    <ToolCard />
                 </div>
         );             
     }
