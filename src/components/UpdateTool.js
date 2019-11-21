@@ -91,10 +91,9 @@ const UpdateTool = props => {
             .get(`/tools`)
             .then(res => {
                 const findTool = res.data.find(item => item.id === Number(toolId));
-                console.log("Find Tool", findTool);
                 setTool(findTool);
             });
-    }, []);
+    }, [toolId]);
 
     const handleChanges = e => {
         setTool({ ...tool, [e.target.name]: e.target.value });

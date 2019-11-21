@@ -12,7 +12,7 @@ const NewToolList = (props) => {
             props.fetchTools();
         }
         setSearchTools(props.tools)
-    }, [props.tools])
+    }, [props, props.tools])
 
     const handleInputChange = event => {
         setQuery(event.target.value);
@@ -41,7 +41,7 @@ const NewToolList = (props) => {
                             value={query}
                             name="name"
                             placeholder="Search For Tools"
-                            autocomplete="off"
+                            autoComplete="off"
                         />
                         <button>Search</button>
                     </form>
