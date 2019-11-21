@@ -6,7 +6,7 @@ import SignUp from "./components/Sam/SignUp";
 import "./Components.css";
 import "./App.css";
 import NavBar from "./components/Kai/navBar";
-import SearchForm from './components/Aaron/SearchForm';
+import NewToolList from "./components/Aaron/NewToolList";
 import Profile from "./components/Kai/profile";
 import UpdateUser from "./components/Sam/UpdateUser";
 import AddTool from "./components/Aaron/AddTool";
@@ -22,7 +22,7 @@ function App() {
 
       <Route path="/sign-up" component={SignUp} />
 
-      <PrivateRoute path="/tools" component={SearchForm} />
+      <PrivateRoute path="/tools" component={NewToolList} />
 
       <PrivateRoute path="/user/:id" component={Profile} />
 
