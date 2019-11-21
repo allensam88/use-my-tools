@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Router } from 'react-router-dom';
 import AxiosWithAuth from '../../utils/AxiosWithAuth';
 import { connect } from 'react-redux';
 import { fetchTools, updateTool } from '../../utils/actions';
@@ -7,7 +8,7 @@ import axios from 'axios';
 const SearchForm = props => {
     const [tools, setTools] = useState([]);
     const [query, setQuery] = useState("");
-    let  [state, setState] = useState();
+    // let  [state, setState] = useState();
 
     useEffect(() => {
         AxiosWithAuth()
@@ -16,25 +17,30 @@ const SearchForm = props => {
                 const search = res.data.filter(tool =>
                     tool.Name.toLowerCase().includes(query.toLowerCase())
                 );
-                console.log(res);
+                console.log('Response Data', res.data);
                 setTools(search);
             })
             .catch(err => console.log(err));
-    }, [query, state]);
+    }, [query]);
 
     const handleInputChange = event => {
         setQuery(event.target.value);
     };
 
+    console.log('Props History', props.history);
+    
     const toggleBorrow = (tool) => {
-        setState({});
+        // setState({});
         const updateBorrowedTool = {
             borrowed: 1,
             borrowed_to: localStorage.getItem('username')
         }
         console.log('updated tool', updateBorrowedTool);
         props.updateTool(updateBorrowedTool, tool.id);
+        setQuery('');
+        // window.location.reload();
     }
+
 
     return (
         <div className="tool-search">
@@ -78,7 +84,6 @@ const SearchForm = props => {
                                 >Borrowed
                                 </button>
                             }
-
                         </div>
                     </div>
                 ))}
