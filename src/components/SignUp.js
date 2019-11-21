@@ -5,6 +5,12 @@ import styled from "styled-components";
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
+  margin-top: 15%;
+
+  i {
+    color: #454851;
+    margin: 1%;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -31,7 +37,7 @@ const StyledButton = styled.button`
   font-size: 20px;
   width: 120px;
   margin: 10px auto;
-  background-color: #ce8147;
+  background-color: #4d7c8a;
   border: 2px solid #454851;
   border-radius: 5px;
   cursor: pointer;
@@ -113,6 +119,7 @@ const SignUp = props => {
   return (
     <div>
       <StyledForm onSubmit={register}>
+        <i class="fas fa-id-card fa-5x"></i>
         <StyledInput
           type="text"
           name="user"
