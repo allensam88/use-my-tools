@@ -57,7 +57,6 @@ const DeleteTool = props => {
   const handleSubmit = e => {
     e.preventDefault();
     props.deleteTool(id);
-    // alert(`${} was deleted`);
     props.history.push(`/user/${userId}`);
   };
 
@@ -67,7 +66,7 @@ const DeleteTool = props => {
   };
 
   if (props.isDeleting) {
-    return <p>Deleting Client...</p>;
+    return <p>Deleting Tool...</p>;
   } else {
     return (
       <Div>

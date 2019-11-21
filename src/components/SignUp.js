@@ -119,6 +119,7 @@ const SignUp = props => {
           value={user}
           onChange={userHandler}
           placeholder="Username"
+          autoComplete="off"
         />
         <StyledInput
           type="password"
@@ -126,6 +127,7 @@ const SignUp = props => {
           value={pass}
           onChange={passHandler}
           placeholder="Password"
+          autoComplete="off"
         />
         {passLength()}
         <StyledInput
@@ -134,6 +136,7 @@ const SignUp = props => {
           value={confirmPass}
           onChange={confirmHandler}
           placeholder="Confirm Password"
+          autoComplete="off"
         />
         {passConfirm()}
         <StyledInput
@@ -142,6 +145,7 @@ const SignUp = props => {
           value={location}
           onChange={locationHandler}
           placeholder="location"
+          autoComplete="off"
         />
         <StyledButton>Register</StyledButton>
       </StyledForm>

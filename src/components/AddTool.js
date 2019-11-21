@@ -61,14 +61,14 @@ const AddTool = props => {
       ownerId: userId,
       name: tool.name,
       price: Number(tool.price),
-      toolImage: tool.toolImage
+      toolImg: tool.toolImg
     };
     props.addTool(newTool);
     alert(`Successfully added "${tool.name}"`);
     setTool({
       name: "",
       price: "",
-      tool: ""
+      toolImg: ""
     });
     props.history.push(`/user/${userId}`);
   };
@@ -99,10 +99,10 @@ const AddTool = props => {
           />
           <OtherInput
             id="toolImage"
-            name="toolImage"
+            name="toolImg"
             placeholder="image"
             onChange={handleChanges}
-            value={tool.toolImage}
+            value={tool.toolImg}
             autoComplete="off"
           />
           <Button type="submit">Add Tool</Button>
