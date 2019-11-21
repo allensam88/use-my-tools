@@ -16,9 +16,7 @@ const NewToolList = (props) => {
             );
             setTools(search);
         })
-        .catch(err => {
-            // console.log(err);
-        })
+        .catch(err => console.log(err));
     }, [query])
 
     const handleInputChange = event => {
@@ -45,12 +43,8 @@ const NewToolList = (props) => {
                 {tools.map(data => {
                     return (
                         <ToolCard 
-                        Image={data.Image}
-                        Name={data.Name}
-                        Price={data.Price}
-                        Owner={data.Owner}
-                        Location={data.Location}
-                        Borrowed={data.Borrowed}
+                        key={data.id}
+                        data={data}
                         />
                     )
                 })}

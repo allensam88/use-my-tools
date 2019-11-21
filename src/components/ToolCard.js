@@ -4,50 +4,50 @@ import { connect } from "react-redux";
 import { updateTool } from "../utils/actions";
 
 const ToolCard = props => {
-  const toggleBorrow = tool => {
-    const updateBorrowedTool = {
-      borrowed: 1,
-      borrowed_to: localStorage.getItem("username")
-    };
-    console.log("updated tool", updateBorrowedTool);
-    props.updateTool(updateBorrowedTool, tool.id);
-  };
+    const { id, Image, Name, Price, Owner, Location, Borrowed, BorrowedTo } = props.data
 
-  return (
-    <div className="card">
-      <div className="card-body">
-        <img src={props.Image} alt="tool-img" />
-        <h4 className="card-title">Tool: {props.Name}</h4>
-        <p>Owner: {props.Owner} </p>
-        <p>Price: {props.Price} </p>
-        <p>Location: {props.Location} </p>
-        {props.Borrowed === 0 && (
-          <button
-            onClick={() => toggleBorrow(props)}
-            className="btn btn-custom"
-            type="submit"
-          >
-            Borrow
+    const borrowTool = () => {
+        const updateBorrowedTool = {
+            borrowed: 1,
+            borrowed_to: localStorage.getItem("username")
+        };
+        console.log("updated tool", updateBorrowedTool);
+        props.updateTool(updateBorrowedTool, id);
+    };
+
+    return (
+        <div className="card">
+            <div className="card-body">
+                <img src={Image} alt="tool-img" className="card-image" />
+                <h4 className="card-title">Tool: {Name}</h4>
+                <p>Owner: {Owner} </p>
+                <p>Price: {Price} </p>
+                <p>Location: {Location} </p>
+                {Borrowed === 0 && (
+                    <button
+                        onClick={() => borrowTool()}
+                        className="btn btn-custom"
+                        type="submit">
+                        Borrow
           </button>
-        )}
-        {props.Borrowed === 1 && (
-          <button
-            onClick={() => toggleBorrow(props)}
-            className="btn btn-custom"
-            type="submit"
-            disabled
-          >
-            Borrowed
-          </button>
-        )}
-      </div>
-    </div>
-  );
+                )}
+                {Borrowed === 1 && (
+                    <button
+                        onClick={() => borrowTool()}
+                        className="btn btn-custom"
+                        type="submit"
+                        disabled>
+                        Borrowed by: {BorrowedTo}
+                    </button>
+                )}
+            </div>
+        </div>
+    );
 };
 const mapStateToProps = state => {
-  return {
-    isUpdating: state.isUpdating
-  };
+    return {
+        isUpdating: state.isUpdating
+    };
 };
 
 export default connect(mapStateToProps, { updateTool })(ToolCard);

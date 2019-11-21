@@ -119,6 +119,7 @@ const UpdateUser = props => {
             name="username"
             value={userToUpdate.username}
             onChange={handleChanges}
+            autoComplete="off"
           />
           <Label>Location:</Label>
           <OtherInput
@@ -126,6 +127,7 @@ const UpdateUser = props => {
             name="location"
             value={userToUpdate.location}
             onChange={handleChanges}
+            autoComplete="off"
           />
           <Button>Update</Button>
           <ReturnButton onClick={() => props.history.push(`/user/${userId}`)}>

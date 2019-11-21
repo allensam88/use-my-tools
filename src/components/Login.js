@@ -70,12 +70,14 @@ const Login = props => {
           value={user}
           onChange={userHandler}
           placeholder="Username"
+          autoComplete="off"
         />
         <StyledInput
           type="password"
           value={pass}
           onChange={passHandler}
           placeholder="Password"
+          autoComplete="off"
         />
         <StyledButton>Log In</StyledButton>
         <StyledButton
