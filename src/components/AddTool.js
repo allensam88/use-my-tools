@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addTool } from "../../utils/actions";
+import { addTool } from "../utils/actions";
 import styled from "styled-components";
 
 const StyledForm = styled.form`

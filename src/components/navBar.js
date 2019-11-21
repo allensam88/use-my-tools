@@ -1,7 +1,7 @@
 import React from "react";
-import "../../Components.css";
+import "../Components.css";
 import { Link } from "react-router-dom";
-import logo from "../../img/Wht-Logo.png";
+import logo from "../img/Wht-Logo.png";
 
 const NavBar = () => {
   const userId = localStorage.getItem("userId");
