@@ -26,15 +26,18 @@ const StyledInput = styled.input`
 
 const StyledButton = styled.button`
   font-size: 20px;
-  width: 120px;
+  width: 170px;
   margin: 10px auto;
   background-color: #4d7c8a;
-  border: 2px solid #454851;
+  border: 2px solid #4d7c8a;
   border-radius: 5px;
   cursor: pointer;
+  color: white;
 
   :hover {
-    background-color: gray;
+    box-shadow: 4px 4px 5px #6b878f;
+    transition: 0.3s;
+    outline: none;
   }
 `;
 

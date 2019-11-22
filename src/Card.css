@@ -14,7 +14,13 @@
   padding: 1%;
   border-radius: 1rem;
   color: black;
-  background-color: slategray;
+  background-color: slategrey;
+  transition: 600ms;
+}
+
+.card-container:hover {
+  transform: scale(1.05);
+  transition: 600ms all;
 }
 
 .product {
@@ -25,6 +31,8 @@
 .card-images img {
   width: 150px;
   height: auto;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .product p {
@@ -55,6 +63,12 @@
   background-color: #454851;
   border-radius: 20px;
   width: 150px;
+}
+
+.btn-custom:hover {
+  background: #4d7c8a;
+  box-shadow: 8px 8px 10px #000000;
+  transition: 0.3s;
 }
 
 .btn-slide {
