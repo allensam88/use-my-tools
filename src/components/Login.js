@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
+import NavBarLogin from "./navBarLogin";
 
 const StyledForm = styled.form`
   display: flex;
@@ -70,6 +71,7 @@ const Login = props => {
 
   return (
     <div>
+      <NavBarLogin />
       <StyledForm onSubmit={login}>
         <i class="fas fa-tools fa-5x"></i>
         <StyledInput

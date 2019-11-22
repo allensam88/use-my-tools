@@ -1,0 +1,50 @@
+.Tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 25%;
+  box-shadow: 8px 8px 5px #6b878f;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 0 0 1rem 0;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-images img {
+  width: 150px;
+  height: auto;
+}
+
+.product p {
+  font-family: "Tomorrow", sans-serif;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.product h1 {
+  font-family: "Tomorrow", sans-serif;
+  font-size: 1.6rem;
+}
+
+.product h2 {
+  font-family: "Tomorrow", sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.btn-custom {
+  color: white;
+  background-color: #4d7c8a;
+  border-radius: 20px;
+  width: 150px;
+}
