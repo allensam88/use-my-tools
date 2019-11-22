@@ -7,7 +7,7 @@ const NavBar = () => {
   const userId = localStorage.getItem("userId");
   return (
     <nav className="navbar navbar-custom">
-      <Link to="/tools">
+      <Link to="/">
         <img src={logo} alt={"logo"} />
       </Link>
       <ul className="nav">

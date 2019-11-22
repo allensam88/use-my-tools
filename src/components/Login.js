@@ -6,7 +6,7 @@ import NavBarLogin from "./navBarLogin";
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin-top: 15%;
+  margin-top: 12%;
 
   i {
     color: #454851;
