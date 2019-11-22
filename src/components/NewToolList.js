@@ -6,7 +6,7 @@ import { fetchTools } from '../utils/actions';
 const NewToolList = (props) => {
     const [searchTools, setSearchTools] = useState([]);
     const [query, setQuery] = useState("");
-    
+
     useEffect(() => {
         if (props.tools.length === 0) {
             props.fetchTools();
@@ -34,31 +34,31 @@ const NewToolList = (props) => {
                 <div className="search-form">
                     <i className="fas fa-search"></i>
                     <form className="search" onSubmit={submitSearch}>
-                        <input
-                            className="search-cont"
-                            type="text"
-                            onChange={handleInputChange}
-                            value={query}
-                            name="name"
-                            placeholder="Search For Tools"
-                            autoComplete="off"
-                        />
-                        <button>Search</button>
-                    </form>
-                </div>
-                <div className='Tools-list'>
-                    {searchTools.map(data => {
-                        return (
-                            <ToolCard
-                                key={data.id}
-                                data={data}
-                            />
-                        )
-                    })}
-                </div>
+                    <input
+                        className="search-cont"
+                        type="text"
+                        onChange={handleInputChange}
+                        value={query}
+                        name="name"
+                        placeholder="Search For Tools"
+                        autoComplete="off"
+                    />
+                    <button>Search</button>
+                </form>
             </div>
-        )
-    }
+            <div className='Tools-list'>
+                {searchTools.map(data => {
+                    return (
+                        <ToolCard
+                            key={data.id}
+                            data={data}
+                        />
+                    )
+                })}
+            </div>
+        </div>
+    )
+}
 }
 
 const mapStateToProps = state => {
