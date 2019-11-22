@@ -90,43 +90,43 @@ const AddTool = props => {
   } else {
     return (
       <div>
-        <NavBar />
-        <div>
-          <Required>*All fields are required</Required>
-          <StyledForm onSubmit={submitForm}>
-            <NameInput
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Name"
-              onChange={handleChanges}
-              value={tool.name}
-              autoComplete="off"
-            />
-            <OtherInput
-              id="price"
-              type="text"
-              name="price"
-              placeholder="Price"
-              onChange={handleChanges}
-              value={tool.price}
-              autoComplete="off"
-            />
-            <OtherInput
-              id="toolImage"
-              type="text"
-              name="toolImg"
-              placeholder="Image URL"
-              onChange={handleChanges}
-              value={tool.toolImg}
-              autoComplete="off"
-            />
-            <Button type="submit">Add Tool</Button>
-          </StyledForm>
-          <Button onClick={() => props.history.push(`/user/${userId}`)}>
-            Return To Profile
-          </Button>
-        </div>
+        <Required>*All fields are required</Required>
+        <StyledForm onSubmit={submitForm}>
+          <NameInput
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Name"
+            onChange={handleChanges}
+            value={tool.name}
+            autoComplete="off"
+            required
+          />
+          <OtherInput
+            id="price"
+            type="text"
+            name="price"
+            placeholder="Price"
+            onChange={handleChanges}
+            value={tool.price}
+            autoComplete="off"
+            required
+          />
+          <OtherInput
+            id="toolImage"
+            type="text"
+            name="toolImg"
+            placeholder="Image URL"
+            onChange={handleChanges}
+            value={tool.toolImg}
+            autoComplete="off"
+            required
+          />
+          <Button type="submit">Add Tool</Button>
+        </StyledForm>
+        <Button onClick={() => props.history.push(`/user/${userId}`)}>
+          Return To Profile
+        </Button>  
       </div>
     );
   }
