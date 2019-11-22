@@ -18,12 +18,23 @@ const ToolCard = props => {
             })
     };
 
+    const returnTool = () => {
+        const updateBorrowedTool = {
+            borrowed: 0,
+            borrowed_to: ""
+        };
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                props.fetchTools();
+            })
+    }
+
     return (
         <div className="card">
             <div className="card-body">
                 <img src={Image} alt="tool-img" className="card-image" />
                 <h4 className="card-title">Tool: {Name}</h4>
-                <p>Owner: {Owner} </p>
+                <p>Owner: {Owner}</p>
                 <p>Price: {Price} </p>
                 <p>Location: {Location} </p>
                 {Borrowed === 0 && (
@@ -34,12 +45,18 @@ const ToolCard = props => {
                     </button>
                 )}
                 {Borrowed === 1 && (
+                    <>
                     <button
                         className="btn btn-custom"
-                        type="submit"
                         disabled>
                         Borrowed by: {BorrowedTo}
                     </button>
+                    <button
+                        onClick={returnTool}    
+                        className="btn btn-custom">
+                        Return
+                    </button>
+                    </>    
                 )}
             </div>
         </div>

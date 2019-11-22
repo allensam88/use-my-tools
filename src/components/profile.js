@@ -4,7 +4,7 @@ import { updateTool, fetchTools } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
 import "../Components.css";
-
+import BorrowedTools from './ProfileBorrowedTools';
 const ProfileInfo = styled.div`
   display: flex;
   justify-content: center;
@@ -51,7 +51,6 @@ const Profile = props => {
             borrowed: 0,
             borrowed_to: ""
         };
-        console.log("updated tool", updateBorrowedTool);
         props.updateTool(updateBorrowedTool, id)
             .then(() => {
                 setTrigger(!trigger);
@@ -85,6 +84,7 @@ const Profile = props => {
             <span>Add Tool</span>
           </button>
         </ButtonInfo>
+        <h2>My Tools</h2>
         <div className="card-list">
           {userProfile.tools.map(tool => {
             return (
@@ -118,6 +118,9 @@ const Profile = props => {
               </div>
             );
           })}
+        </div>
+        <div>
+            <BorrowedTools />
         </div>
       </div>
     );
