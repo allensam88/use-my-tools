@@ -2,6 +2,7 @@ import React from "react";
 import { deleteTool } from "../utils/actions";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const Div = styled.div`
   display: flex;
@@ -33,6 +34,11 @@ const YesButton = styled.button`
     background: white;
     color: red;
     border: 1px solid red;
+    box-shadow: 8px 8px rgba(255, 0, 0, 0.8);
+    transition: 0.3s;
+  }
+  focus: {
+    outline: 0;
   }
 `;
 const NoButton = styled.button`
@@ -49,6 +55,11 @@ const NoButton = styled.button`
     background: #4d7c8a;
     color: white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+  :focus {
+    outline: none;
   }
 `;
 
@@ -70,13 +81,16 @@ const DeleteTool = props => {
     return <p>Deleting Tool...</p>;
   } else {
     return (
-      <Div>
-        <YouSure>
-          Are you sure you want to <Span>permanently</Span> delete this tool?
-        </YouSure>
-        <YesButton onClick={handleSubmit}>{`Delete`}</YesButton>
-        <NoButton onClick={goBack}>No, return to profile</NoButton>
-      </Div>
+      <div>
+        <NavBar />
+        <Div>
+          <YouSure>
+            Are you sure you want to <Span>permanently</Span> delete this tool?
+          </YouSure>
+          <YesButton onClick={handleSubmit}>{`Delete`}</YesButton>
+          <NoButton onClick={goBack}>No, return to profile</NoButton>
+        </Div>
+      </div>
     );
   }
 };

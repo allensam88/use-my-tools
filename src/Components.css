@@ -20,6 +20,7 @@
 .nav-link:hover {
   color: #4d7c8a;
   border-bottom: 2px solid #4d7c8a;
+  transition: 0.4s all;
 }
 
 /*Footer styling */
@@ -38,7 +39,6 @@ footer {
   right: 0;
   flex-shrink: 0;
 }
-
 
 .contact-footer {
   display: flex;
@@ -72,59 +72,6 @@ footer {
   margin-bottom: 5px;
 }
 
-
-
-
-/*Slide button styling */
-.button_container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 30%;
-}
-
-.btn-slide {
-  border: none;
-  display: block;
-  text-align: center;
-  cursor: pointer;
-  text-transform: uppercase;
-  outline: none;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  font-weight: 700;
-  font-size: 15px;
-  background-color: #222;
-  padding: 17px 60px;
-  margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.btn-slide span {
-  position: relative;
-  z-index: 1;
-}
-
-.btn-slide:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 490%;
-  width: 140%;
-  background: #78c7d2;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
-  transform: translateX(-98%) translateY(-25%) rotate(45deg);
-}
-
-.btn-slide:hover:after {
-  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
-  transform: translateX(-9%) translateY(-25%) rotate(45deg);
-}
-
 /* shadow button styling */
 .shadow-btn {
   border: 2px solid #4d7c8a;
@@ -150,3 +97,6 @@ footer {
   outline: 0;
 }
 
+.fa-search {
+  cursor: pointer;
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTool } from "../utils/actions";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const StyledForm = styled.form`
   display: flex;
@@ -18,11 +19,18 @@ const Button = styled.button`
   color: white;
   font-size: 1rem;
   font-weight: bold;
+  transition: 0.3s;
 
   :hover {
-    background:#4d7c8a ;
+    background: #4d7c8a;
     color: white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -92,6 +100,7 @@ const AddTool = props => {
             onChange={handleChanges}
             value={tool.name}
             autoComplete="off"
+            required
           />
           <OtherInput
             id="price"
@@ -101,6 +110,7 @@ const AddTool = props => {
             onChange={handleChanges}
             value={tool.price}
             autoComplete="off"
+            required
           />
           <OtherInput
             id="toolImage"
@@ -110,12 +120,13 @@ const AddTool = props => {
             onChange={handleChanges}
             value={tool.toolImg}
             autoComplete="off"
+            required
           />
           <Button type="submit">Add Tool</Button>
         </StyledForm>
         <Button onClick={() => props.history.push(`/user/${userId}`)}>
           Return To Profile
-        </Button>
+        </Button>  
       </div>
     );
   }

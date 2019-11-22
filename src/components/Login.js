@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
+import NavBarLogin from "./navBarLogin";
 
 const StyledForm = styled.form`
   display: flex;
@@ -25,15 +26,18 @@ const StyledInput = styled.input`
 
 const StyledButton = styled.button`
   font-size: 20px;
-  width: 120px;
+  width: 170px;
   margin: 10px auto;
   background-color: #4d7c8a;
-  border: 2px solid #454851;
+  border: 2px solid #4d7c8a;
   border-radius: 5px;
   cursor: pointer;
+  color: white;
 
   :hover {
-    background-color: gray;
+    box-shadow: 4px 4px 5px #6b878f;
+    transition: 0.3s;
+    outline: none;
   }
 `;
 
@@ -70,10 +74,10 @@ const Login = props => {
 
   return (
     <div>
+      <NavBarLogin />
       <StyledForm onSubmit={login}>
         <i class="fas fa-tools fa-5x"></i>
         <StyledInput
-          type="text"
           value={user}
           onChange={userHandler}
           placeholder="Username"
