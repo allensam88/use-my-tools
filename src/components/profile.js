@@ -4,12 +4,9 @@ import { updateTool, fetchTools } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
 import "../Components.css";
-<<<<<<< HEAD
 import BorrowedTools from './ProfileBorrowedTools';
-=======
 import NavBar from "./navBar";
 
->>>>>>> bbf1bf2f8a57b484a86ad8f6efed1dcf07e49da7
 const ProfileInfo = styled.div`
   display: flex;
   justify-content: center;

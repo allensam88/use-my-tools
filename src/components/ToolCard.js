@@ -13,29 +13,29 @@ const ToolCard = props => {
     Borrowed,
     BorrowedTo
   } = props.data;
+  
   const borrowTool = event => {
     event.preventDefault();
     const updateBorrowedTool = {
       borrowed: 1,
       borrowed_to: localStorage.getItem("username")
     };
-
     props.updateTool(updateBorrowedTool, id).then(() => {
       props.fetchTools();
     });
   };
 
-  const returnTool = () => {
-    const updateBorrowedTool = {
-        borrowed: 0,
-        borrowed_to: ""
-    };
-    props.updateTool(updateBorrowedTool, id)
-        .then(() => {
-            props.fetchTools();
-        })
-}
-
+    const returnTool = () => {
+        const updateBorrowedTool = {
+            borrowed: 0,
+            borrowed_to: ""
+        };
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                props.fetchTools();
+            })
+    }
+    
   return (
     <div className="card-container">
       <div className="card-images">
@@ -59,21 +59,21 @@ const ToolCard = props => {
           {Borrowed === 1 && (
             <>
             <button className="btn btn-custom" type="submit" disabled>
-              Borrowed by: {BorrowedTo}
+                Borrowed by: {BorrowedTo}
             </button>
-                                <button
-                                onClick={returnTool}    
-                                className="btn btn-custom">
-                                Return
-                            </button>
-                            </> 
+            <button
+                onClick={returnTool}    
+                className="btn btn-custom">
+                Return
+            </button>
+            </>
           )}
->>>>>>> bbf1bf2f8a57b484a86ad8f6efed1dcf07e49da7
         </div>
       </div>
     </div>
   );
 };
+
 const mapStateToProps = state => {
   return {
     isUpdating: state.isUpdating
