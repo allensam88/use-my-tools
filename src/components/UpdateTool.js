@@ -3,6 +3,7 @@ import AxiosWithAuth from "../utils/AxiosWithAuth";
 import { connect } from "react-redux";
 import { fetchTools, updateTool } from "../utils/actions";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const StyledForm = styled.form`
   margin: 0 auto;
@@ -74,7 +75,7 @@ const ReturnButton = styled.button`
 `;
 
 const UpdateTool = props => {
-    const [tool, setTool] = useState({
+const [tool, setTool] = useState({
         id: "",
         Name: "",
         Price: "",
@@ -153,10 +154,10 @@ const UpdateTool = props => {
 };
 
 const mapStateToProps = state => {
-    return {
-        tools: state.tools,
-        isUpdating: state.isUpdating
-    };
+  return {
+    tools: state.tools,
+    isUpdating: state.isUpdating
+  };
 };
 
 export default connect(mapStateToProps, { fetchTools, updateTool })(UpdateTool);
