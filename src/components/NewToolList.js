@@ -4,16 +4,16 @@ import ToolCard from "./ToolCard";
 import { fetchTools } from "../utils/actions";
 import NavBar from "./navBar";
 
-const NewToolList = (props) => {
-    const [searchTools, setSearchTools] = useState([]);
-    const [query, setQuery] = useState("");
+const NewToolList = props => {
+  const [searchTools, setSearchTools] = useState([]);
+  const [query, setQuery] = useState("");
 
-    useEffect(() => {
-        if (props.tools.length === 0) {
-            props.fetchTools();
-        }
-        setSearchTools(props.tools)
-    }, [props, props.tools])
+  useEffect(() => {
+    if (props.tools.length === 0) {
+      props.fetchTools();
+    }
+    setSearchTools(props.tools);
+  }, [props, props.tools]);
 
   const handleInputChange = event => {
     setQuery(event.target.value);
