@@ -13,6 +13,7 @@ const ProfileInfo = styled.div`
   padding: 2rem;
 
   i {
+    color: black;
     width: 10rem;
   }
 `;
@@ -34,31 +35,30 @@ const ButtonInfo = styled.div`
   align-items: center;
 `;
 const Profile = props => {
-    const [userProfile, setUserProfile] = useState(null);
-    const [trigger, setTrigger] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
+  const [trigger, setTrigger] = useState(false);
 
-    useEffect(() => {
-        const id = props.match.params.id;
-        AxiosWithAuth()
-            .get(`/users/${id}`)
-            .then(res => {
-                setUserProfile(res.data);
-            })
-            .catch(err => console.log(err));
-    }, [trigger, props.match.params.id]);
+  useEffect(() => {
+    const id = props.match.params.id;
+    AxiosWithAuth()
+      .get(`/users/${id}`)
+      .then(res => {
+        setUserProfile(res.data);
+      })
+      .catch(err => console.log(err));
+  }, [trigger, props.match.params.id]);
 
-    const returnTool = (id) => {
-        const updateBorrowedTool = {
-            borrowed: 0,
-            borrowed_to: ""
-        };
-        console.log("updated tool", updateBorrowedTool);
-        props.updateTool(updateBorrowedTool, id)
-            .then(() => {
-                setTrigger(!trigger);
-                props.fetchTools();
-            })
-    }
+  const returnTool = id => {
+    const updateBorrowedTool = {
+      borrowed: 0,
+      borrowed_to: ""
+    };
+    console.log("updated tool", updateBorrowedTool);
+    props.updateTool(updateBorrowedTool, id).then(() => {
+      setTrigger(!trigger);
+      props.fetchTools();
+    });
+  };
 
   if (!userProfile) {
     return <p>Loading User Profile...</p>;
@@ -90,33 +90,44 @@ const Profile = props => {
         <div className="card-list">
           {userProfile.tools.map(tool => {
             return (
-              <div key={tool.id} className="card">
-                <img src={tool.toolImg} alt="tool" className="card-image" />
-                <p>{tool.name}</p>
-                <p>${tool.price} /hr</p>
+              <div key={tool.id} className="card-container">
+                <div className="card-images">
+                  <img src={tool.toolImg} alt="tool" />
+                </div>
+                <div className="product">
+                  <h1>{tool.name}</h1>
+                  <h2>${tool.price} /hr</h2>
 
-                {tool.borrowed === 1 && (
-                  <div>
-                    <p>Loaned to: {tool.borrowed_to}</p>
-                    <button
-                      onClick={() => returnTool(tool.id)}
-                      className="btn btn-custom"
-                      type="submit"
-                    >
-                      Return Tool
-                    </button>
-                  </div>
-                )}
-                <button
-                  onClick={() => props.history.push(`/update-tool/${tool.id}`)}
-                >
-                  update
-                </button>
-                <button
-                  onClick={() => props.history.push(`/delete-tool/${tool.id}`)}
-                >
-                  delete
-                </button>
+                  {tool.borrowed === 1 && (
+                    <div className="btn-slide">
+                      <p>Loaned to: {tool.borrowed_to}</p>
+                      <button
+                        onClick={() => returnTool(tool.id)}
+                        className="btn btn-custom"
+                        type="submit"
+                      >
+                        <span>Return Tool</span>
+                      </button>
+                    </div>
+                  )}
+
+                  <button
+                    onClick={() =>
+                      props.history.push(`/update-tool/${tool.id}`)
+                    }
+                    className="btn btn-custom"
+                  >
+                    <span>Update</span>
+                  </button>
+                  <button
+                    onClick={() =>
+                      props.history.push(`/delete-tool/${tool.id}`)
+                    }
+                    className="btn btn-custom"
+                  >
+                    <span>Delete</span>
+                  </button>
+                </div>
               </div>
             );
           })}

@@ -75,82 +75,83 @@ const ReturnButton = styled.button`
 `;
 
 const UpdateTool = props => {
-const [tool, setTool] = useState({
-        id: "",
-        Name: "",
-        Price: "",
-        Image: "",
-        Owner: "",
-        Location: ""
-    });
+  const [tool, setTool] = useState({
+    id: "",
+    Name: "",
+    Price: "",
+    Image: "",
+    Owner: "",
+    Location: ""
+  });
 
-    const userId = localStorage.getItem("userId");
-    const toolId = props.match.params.id;
+  const userId = localStorage.getItem("userId");
+  const toolId = props.match.params.id;
 
-    useEffect(() => {
-        AxiosWithAuth()
-            .get(`/tools`)
-            .then(res => {
-                const findTool = res.data.find(item => item.id === Number(toolId));
-                setTool(findTool);
-            });
-    }, [toolId]);
+  useEffect(() => {
+    AxiosWithAuth()
+      .get(`/tools`)
+      .then(res => {
+        const findTool = res.data.find(item => item.id === Number(toolId));
+        setTool(findTool);
+      });
+  }, [toolId]);
 
-    const handleChanges = e => {
-        setTool({ ...tool, [e.target.name]: e.target.value });
+  const handleChanges = e => {
+    setTool({ ...tool, [e.target.name]: e.target.value });
+  };
+
+  const submitChanges = e => {
+    const updatedTool = {
+      name: tool.Name,
+      price: tool.Price,
+      toolImg: tool.Image
     };
+    e.preventDefault();
+    props.updateTool(updatedTool, toolId);
+    alert(`Updated information for ${updatedTool.name}`);
+    props.history.push(`/user/${userId}`);
+  };
 
-    const submitChanges = e => {
-        const updatedTool = {
-            name: tool.Name,
-            price: tool.Price,
-            toolImg: tool.Image
-        };
-        e.preventDefault();
-        props.updateTool(updatedTool, toolId);
-        alert(`Updated information for ${updatedTool.name}`);
-        props.history.push(`/user/${userId}`);
-    };
+  if (!tool) {
+    return <p>Updating Tool Information...</p>;
+  } else {
+    return (
+      <div>
+        <NavBar />
+        <StyledForm onSubmit={submitChanges}>
+          <TopLabel>Name:</TopLabel>
+          <NameInput
+            type="text"
+            name="Name"
+            value={tool.Name}
+            onChange={handleChanges}
+            autoComplete="off"
+          />
+          <Label>Price:</Label>
+          <OtherInput
+            type="text"
+            name="Price"
+            value={tool.Price}
+            onChange={handleChanges}
+            autoComplete="off"
+          />
+          <Label>Image URL:</Label>
+          <OtherInput
+            type="text"
+            name="Image"
+            value={tool.Image}
+            onChange={handleChanges}
+            autoComplete="off"
+          />
 
-    if (!tool) {
-        return <p>Updating Tool Information...</p>;
-    } else {
-        return (
-            <div>
-                <StyledForm onSubmit={submitChanges}>
-                    <TopLabel>Name:</TopLabel>
-                    <NameInput
-                        type="text"
-                        name="Name"
-                        value={tool.Name}
-                        onChange={handleChanges}
-                        autoComplete="off"
-                    />
-                    <Label>Price:</Label>
-                    <OtherInput
-                        type="text"
-                        name="Price"
-                        value={tool.Price}
-                        onChange={handleChanges}
-                        autoComplete="off"
-                    />
-                    <Label>Image URL:</Label>
-                    <OtherInput
-                        type="text"
-                        name="Image"
-                        value={tool.Image}
-                        onChange={handleChanges}
-                        autoComplete="off"
-                    />
-
-                    <Button>Update</Button>
-                    <ReturnButton onClick={() => props.history.push(`/user/${userId}`)}>
-                        Return To Profile
-                    </ReturnButton>
-                </StyledForm>
-            </div>
-        );
-    }
+          <Button>Update</Button>
+          <ReturnButton onClick={() => props.history.push(`/user/${userId}`)}>
+            Return To Profile
+          </ReturnButton>
+        </StyledForm>
+      </div>
+    );
+  }
 };
 
 const mapStateToProps = state => {
