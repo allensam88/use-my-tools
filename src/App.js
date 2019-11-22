@@ -29,7 +29,7 @@ function App() {
 
       <PrivateRoute path="/update-user/:id" component={UpdateUser} />
 
-      <PrivateRoute path="/add-tool/" component={AddTool} />
+      <PrivateRoute path="/add-tool" component={AddTool} />
 
       <PrivateRoute path="/update-tool/:id" component={UpdateTool} />
 

@@ -73,7 +73,6 @@ const Login = props => {
       <StyledForm onSubmit={login}>
         <i class="fas fa-tools fa-5x"></i>
         <StyledInput
-          type="text"
           value={user}
           onChange={userHandler}
           placeholder="Username"

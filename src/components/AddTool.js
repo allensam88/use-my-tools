@@ -99,6 +99,7 @@ const AddTool = props => {
             onChange={handleChanges}
             value={tool.name}
             autoComplete="off"
+            required
           />
           <OtherInput
             id="price"
@@ -108,6 +109,7 @@ const AddTool = props => {
             onChange={handleChanges}
             value={tool.price}
             autoComplete="off"
+            required
           />
           <OtherInput
             id="toolImage"
@@ -117,6 +119,7 @@ const AddTool = props => {
             onChange={handleChanges}
             value={tool.toolImg}
             autoComplete="off"
+            required
           />
           <Button type="submit">Add Tool</Button>
         </StyledForm>
