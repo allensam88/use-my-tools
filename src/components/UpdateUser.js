@@ -3,6 +3,7 @@ import AxiosWithAuth from "../utils/AxiosWithAuth";
 import { connect } from "react-redux";
 import { updateUser } from "../utils/actions";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const StyledForm = styled.form`
   margin: 0 auto;
@@ -114,6 +115,7 @@ const UpdateUser = props => {
   } else {
     return (
       <div>
+        <NavBar />
         <StyledForm onSubmit={submitChanges}>
           <TopLabel>User Name:</TopLabel>
           <NameInput

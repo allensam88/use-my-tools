@@ -2,6 +2,7 @@ import React from "react";
 import { deleteTool } from "../utils/actions";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const Div = styled.div`
   display: flex;
@@ -71,6 +72,7 @@ const DeleteTool = props => {
   } else {
     return (
       <Div>
+        <NavBar />
         <YouSure>
           Are you sure you want to <Span>permanently</Span> delete this tool?
         </YouSure>

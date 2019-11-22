@@ -4,6 +4,7 @@ import { fetchUserById, updateTool } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
 import "../Components.css";
+import NavBar from "./navBar";
 
 const ProfileInfo = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const Profile = props => {
   } else {
     return (
       <div>
+        <NavBar />
         <ProfileInfo>
           <i className="fas fa-user-circle fa-10x" />
           <TextInfo>

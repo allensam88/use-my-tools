@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTool } from "../utils/actions";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const StyledForm = styled.form`
   display: flex;
@@ -20,7 +21,7 @@ const Button = styled.button`
   font-weight: bold;
 
   :hover {
-    background:#4d7c8a ;
+    background: #4d7c8a;
     color: white;
     border: 1px solid #4d7c8a;
   }
@@ -82,40 +83,43 @@ const AddTool = props => {
   } else {
     return (
       <div>
-        <Required>*All fields are required</Required>
-        <StyledForm onSubmit={submitForm}>
-          <NameInput
-            id="name"
-            type="text"
-            name="name"
-            placeholder="Name"
-            onChange={handleChanges}
-            value={tool.name}
-            autoComplete="off"
-          />
-          <OtherInput
-            id="price"
-            type="text"
-            name="price"
-            placeholder="Price"
-            onChange={handleChanges}
-            value={tool.price}
-            autoComplete="off"
-          />
-          <OtherInput
-            id="toolImage"
-            type="text"
-            name="toolImg"
-            placeholder="Image URL"
-            onChange={handleChanges}
-            value={tool.toolImg}
-            autoComplete="off"
-          />
-          <Button type="submit">Add Tool</Button>
-        </StyledForm>
-        <Button onClick={() => props.history.push(`/user/${userId}`)}>
-          Return To Profile
-        </Button>
+        <NavBar />
+        <div>
+          <Required>*All fields are required</Required>
+          <StyledForm onSubmit={submitForm}>
+            <NameInput
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Name"
+              onChange={handleChanges}
+              value={tool.name}
+              autoComplete="off"
+            />
+            <OtherInput
+              id="price"
+              type="text"
+              name="price"
+              placeholder="Price"
+              onChange={handleChanges}
+              value={tool.price}
+              autoComplete="off"
+            />
+            <OtherInput
+              id="toolImage"
+              type="text"
+              name="toolImg"
+              placeholder="Image URL"
+              onChange={handleChanges}
+              value={tool.toolImg}
+              autoComplete="off"
+            />
+            <Button type="submit">Add Tool</Button>
+          </StyledForm>
+          <Button onClick={() => props.history.push(`/user/${userId}`)}>
+            Return To Profile
+          </Button>
+        </div>
       </div>
     );
   }
