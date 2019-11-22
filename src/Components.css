@@ -100,3 +100,12 @@ footer {
 .fa-search {
   cursor: pointer;
 }
+
+.borrowed-tools {
+  font-family: "Tomorrow", sans-serif;
+}
+
+h3 {
+  font-family: "Tomorrow", sans-serif;
+  text-decoration: underline;
+}
