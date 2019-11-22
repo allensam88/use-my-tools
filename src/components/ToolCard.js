@@ -13,6 +13,7 @@ const ToolCard = props => {
     Borrowed,
     BorrowedTo
   } = props.data;
+  
   const borrowTool = event => {
     event.preventDefault();
     const updateBorrowedTool = {
@@ -58,13 +59,13 @@ const ToolCard = props => {
           {Borrowed === 1 && (
             <>
             <button className="btn btn-custom" type="submit" disabled>
-              Borrowed by: {BorrowedTo}
+                Borrowed by: {BorrowedTo}
             </button>
-                                <button
-                        onClick={returnTool}    
-                        className="btn btn-custom">
-                        Return
-                    </button>
+            <button
+                onClick={returnTool}    
+                className="btn btn-custom">
+                Return
+            </button>
             </>
           )}
         </div>
@@ -72,6 +73,7 @@ const ToolCard = props => {
     </div>
   );
 };
+
 const mapStateToProps = state => {
   return {
     isUpdating: state.isUpdating
