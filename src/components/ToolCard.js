@@ -36,7 +36,7 @@ const ToolCard = props => {
         <div className="btn-slide">
           {Borrowed === 0 && (
             <button
-              onClick={() => borrowTool(Borrowed)}
+              onClick={borrowTool}
               className="btn btn-custom"
               type="submit"
             >
