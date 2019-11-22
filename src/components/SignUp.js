@@ -83,7 +83,6 @@ const SignUp = props => {
         .post("/api/auth/register", newUser)
         .then(res => {
           console.log(res);
-          // alert(`Succesfully created user "${res.data.username}"!`)
           props.history.push("/");
         })
         .catch(err => console.log(err));

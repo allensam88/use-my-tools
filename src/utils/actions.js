@@ -64,7 +64,7 @@ export const addTool = newTool => dispatch => {
 //PUT https://use-my-tool.herokuapp.com/tools/update/:id
 export const updateTool = (updatedTool, id) => dispatch => {
     dispatch({ type: UPDATE_TOOL_START });
-
+    
     return AxiosWithAuth()
     .put(`/tools/update/${id}`, updatedTool)
     .then(res => dispatch({ type: UPDATE_TOOL_SUCCESS, payload: res.data }))

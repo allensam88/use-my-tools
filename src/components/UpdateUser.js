@@ -50,10 +50,17 @@ const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
 
+
   :hover {
     background: #4d7c8a;
     color: #white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -71,6 +78,12 @@ const ReturnButton = styled.button`
     background: #4d7c8a;
     color: #white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -86,15 +99,12 @@ const UpdateUser = props => {
     AxiosWithAuth()
       .get(`/users/${userId}`)
       .then(res => {
-        console.log("Response", res.data.user);
         setUserToUpdate(res.data.user);
       });
-  }, []);
+  }, [userId]);
 
   const handleChanges = e => {
     setUserToUpdate({ ...userToUpdate, [e.target.name]: e.target.value });
-    console.log("Target Name", e.target.name);
-    console.log("Target Value", e.target.value);
   };
 
   const submitChanges = e => {
@@ -103,8 +113,6 @@ const UpdateUser = props => {
       username: userToUpdate.username,
       location: userToUpdate.location
     };
-    console.log("Updated User", updatedUser);
-    console.log("user id", userId);
     props.updateUser(updatedUser, userId);
     alert(`Updated information for ${userToUpdate.username}`);
     props.history.push(`/user/${userId}`);

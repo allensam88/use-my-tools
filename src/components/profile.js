@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchUserById, updateTool } from "../utils/actions";
+import { updateTool, fetchTools } from "../utils/actions";
 import AxiosWithAuth from "../utils/AxiosWithAuth";
 import styled from "styled-components";
 import "../Components.css";
@@ -34,29 +34,31 @@ const ButtonInfo = styled.div`
   align-items: center;
 `;
 const Profile = props => {
-  const [userProfile, setUserProfile] = useState(null);
+    const [userProfile, setUserProfile] = useState(null);
+    const [trigger, setTrigger] = useState(false);
 
-  useEffect(() => {
-    const id = props.match.params.id;
-    AxiosWithAuth()
-      .get(`/users/${id}`)
-      .then(res => {
-        console.log("user", res.data);
-        setUserProfile(res.data);
-      })
-      .catch(err => console.log(err));
-  }, []);
+    useEffect(() => {
+        const id = props.match.params.id;
+        AxiosWithAuth()
+            .get(`/users/${id}`)
+            .then(res => {
+                setUserProfile(res.data);
+            })
+            .catch(err => console.log(err));
+    }, [trigger, props.match.params.id]);
 
-  const returnTool = id => {
-    const updateBorrowedTool = {
-      borrowed: 0,
-      borrowed_to: ""
-    };
-    console.log("updated tool", updateBorrowedTool);
-    props.updateTool(updateBorrowedTool, id).then(() => {
-      window.location.reload();
-    });
-  };
+    const returnTool = (id) => {
+        const updateBorrowedTool = {
+            borrowed: 0,
+            borrowed_to: ""
+        };
+        console.log("updated tool", updateBorrowedTool);
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                setTrigger(!trigger);
+                props.fetchTools();
+            })
+    }
 
   if (!userProfile) {
     return <p>Loading User Profile...</p>;
@@ -105,7 +107,6 @@ const Profile = props => {
                     </button>
                   </div>
                 )}
-
                 <button
                   onClick={() => props.history.push(`/update-tool/${tool.id}`)}
                 >
@@ -132,4 +133,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchUserById, updateTool })(Profile);
+export default connect(mapStateToProps, { updateTool, fetchTools })(Profile);

@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { connect } from "react-redux";
-import { updateTool } from "../utils/actions";
+import { updateTool, fetchTools } from "../utils/actions";
 
 const ToolCard = props => {
   const {
@@ -15,17 +15,23 @@ const ToolCard = props => {
     BorrowedTo
   } = props.data;
 
-  const borrowTool = () => {
-    const updateBorrowedTool = {
-      borrowed: 1,
-      borrowed_to: localStorage.getItem("username")
+ const borrowTool = (event) => {
+        event.preventDefault();
+        const updateBorrowedTool = {
+            borrowed: 1,
+            borrowed_to: localStorage.getItem("username")
+        };
+        props.updateTool(updateBorrowedTool, id)
+            .then(() => {
+                props.fetchTools();
+            })
+
     };
     console.log("updated tool", updateBorrowedTool);
     props.updateTool(updateBorrowedTool, id).then(() => {
       props.fetchTools();
     });
   };
-
   return (
     <div className="card-container">
       <div className="card-images">
@@ -56,10 +62,11 @@ const ToolCard = props => {
     </div>
   );
 };
+
 const mapStateToProps = state => {
   return {
     isUpdating: state.isUpdating
   };
 };
 
-export default connect(mapStateToProps, { updateTool })(ToolCard);
+export default connect(mapStateToProps, { fetchTools, updateTool })(ToolCard);
