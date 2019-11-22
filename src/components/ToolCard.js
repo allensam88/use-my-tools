@@ -26,7 +26,7 @@ const ToolCard = props => {
   return (
     <div className="card-container">
       <div className="card-images">
-        <img src={Image} />
+        <img src={Image} alt="Tool-img"/>
       </div>
       <div className="product">
         <p>{Owner}'s</p>

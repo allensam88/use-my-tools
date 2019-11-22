@@ -27,7 +27,7 @@ const TextInfo = styled.div`
   border-radius: 0 0 1rem 0;
   font-family: "Tomorrow", sans-serif;
   color: white;
-  box-shadow: 4px 7px #000000;
+  box-shadow: 4px 7px 5px rgba(0, 0, 0, 1);
 `;
 const ButtonInfo = styled.div`
   display: flex;
