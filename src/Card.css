@@ -9,10 +9,12 @@
   align-items: center;
   justify-content: space-evenly;
   width: 25%;
-  box-shadow: 8px 8px 5px #6b878f;
+  box-shadow: 8px 8px 5px black;
   margin: 2%;
   padding: 1%;
-  border-radius: 0 0 1rem 0;
+  border-radius: 1rem;
+  color: black;
+  background-color: slategray;
 }
 
 .product {
@@ -42,9 +44,24 @@
   text-transform: uppercase;
 }
 
+/* profile styles */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .btn-custom {
   color: white;
-  background-color: #4d7c8a;
+  background-color: #454851;
   border-radius: 20px;
   width: 150px;
+}
+
+.btn-slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.product button {
+  margin: 5%;
 }

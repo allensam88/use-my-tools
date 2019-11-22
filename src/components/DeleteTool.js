@@ -81,14 +81,16 @@ const DeleteTool = props => {
     return <p>Deleting Tool...</p>;
   } else {
     return (
-      <Div>
+      <div>
         <NavBar />
-        <YouSure>
-          Are you sure you want to <Span>permanently</Span> delete this tool?
-        </YouSure>
-        <YesButton onClick={handleSubmit}>{`Delete`}</YesButton>
-        <NoButton onClick={goBack}>No, return to profile</NoButton>
-      </Div>
+        <Div>
+          <YouSure>
+            Are you sure you want to <Span>permanently</Span> delete this tool?
+          </YouSure>
+          <YesButton onClick={handleSubmit}>{`Delete`}</YesButton>
+          <NoButton onClick={goBack}>No, return to profile</NoButton>
+        </Div>
+      </div>
     );
   }
 };

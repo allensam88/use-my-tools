@@ -2,7 +2,6 @@ import React from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import { updateTool, fetchTools } from "../utils/actions";
-
 const ToolCard = props => {
   const {
     id,
@@ -14,20 +13,12 @@ const ToolCard = props => {
     Borrowed,
     BorrowedTo
   } = props.data;
-
- const borrowTool = (event) => {
-        event.preventDefault();
-        const updateBorrowedTool = {
-            borrowed: 1,
-            borrowed_to: localStorage.getItem("username")
-        };
-        props.updateTool(updateBorrowedTool, id)
-            .then(() => {
-                props.fetchTools();
-            })
-
+  const borrowTool = event => {
+    event.preventDefault();
+    const updateBorrowedTool = {
+      borrowed: 1,
+      borrowed_to: localStorage.getItem("username")
     };
-    console.log("updated tool", updateBorrowedTool);
     props.updateTool(updateBorrowedTool, id).then(() => {
       props.fetchTools();
     });
@@ -62,11 +53,9 @@ const ToolCard = props => {
     </div>
   );
 };
-
 const mapStateToProps = state => {
   return {
     isUpdating: state.isUpdating
   };
 };
-
 export default connect(mapStateToProps, { fetchTools, updateTool })(ToolCard);
