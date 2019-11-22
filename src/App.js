@@ -4,8 +4,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import "./Components.css";
+import "./Card.css";
 import "./App.css";
-import NavBar from "./components/navBar";
 import NewToolList from "./components/NewToolList";
 import Profile from "./components/profile";
 import UpdateUser from "./components/UpdateUser";
@@ -17,8 +17,6 @@ import Footer from "./components/footer";
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={NavBar} />
-
       <Route exact path="/" component={Login} />
 
       <Route path="/sign-up" component={SignUp} />

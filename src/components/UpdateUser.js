@@ -3,6 +3,7 @@ import AxiosWithAuth from "../utils/AxiosWithAuth";
 import { connect } from "react-redux";
 import { updateUser } from "../utils/actions";
 import styled from "styled-components";
+import NavBar from "./navBar";
 
 const StyledForm = styled.form`
   margin: 0 auto;
@@ -49,10 +50,17 @@ const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
 
+
   :hover {
     background: #4d7c8a;
     color: #white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -70,6 +78,12 @@ const ReturnButton = styled.button`
     background: #4d7c8a;
     color: #white;
     border: 1px solid #4d7c8a;
+    box-shadow: 8px 8px #6b878f;
+    transition: 0.3s;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -109,6 +123,7 @@ const UpdateUser = props => {
   } else {
     return (
       <div>
+        <NavBar />
         <StyledForm onSubmit={submitChanges}>
           <TopLabel>User Name:</TopLabel>
           <NameInput
