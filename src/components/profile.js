@@ -52,7 +52,6 @@ const Profile = props => {
       .catch(err => console.log(err));
   }, [trigger, props.match.params.id]);
 
-<<<<<<< HEAD
     const returnTool = (id) => {
         const updateBorrowedTool = {
             borrowed: 0,
@@ -64,19 +63,6 @@ const Profile = props => {
                 props.fetchTools();
             })
     }
-=======
-  const returnTool = id => {
-    const updateBorrowedTool = {
-      borrowed: 0,
-      borrowed_to: ""
-    };
-    console.log("updated tool", updateBorrowedTool);
-    props.updateTool(updateBorrowedTool, id).then(() => {
-      setTrigger(!trigger);
-      props.fetchTools();
-    });
-  };
->>>>>>> bbf1bf2f8a57b484a86ad8f6efed1dcf07e49da7
 
   if (!userProfile) {
     return <p>Loading User Profile...</p>;
