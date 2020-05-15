@@ -1,10 +1,17 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE,
-    ADD_START, ADD_SUCCESS, ADD_FAILURE,
-    UPDATE_START, UPDATE_SUCCESS, UPDATE_FAILURE,
-    DELETE_START, DELETE_SUCCESS, DELETE_FAILURE } from './actions';
+import {
+    FETCH_TOOLS_START, FETCH_TOOLS_SUCCESS, FETCH_TOOLS_FAILURE,
+    ADD_TOOL_START, ADD_TOOL_SUCCESS, ADD_TOOL_FAILURE,
+    UPDATE_TOOL_START, UPDATE_TOOL_SUCCESS, UPDATE_TOOL_FAILURE,
+    DELETE_TOOL_START, DELETE_TOOL_SUCCESS, DELETE_TOOL_FAILURE,
+    FETCH_USERS_START, FETCH_USERS_SUCCESS, FETCH_USERS_FAILURE,
+    FETCH_USERID_START, FETCH_USERID_SUCCESS, FETCH_USERID_FAILURE,
+    UPDATE_USER_START, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE
+} from './actions';
 
 const initialState = {
+    tools: [],
     users: [],
+    userProfile: {},
     isFetching: false,
     isAdding: false,
     isUpdating: false,
@@ -13,84 +20,149 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    switch(action.type) {
-        case FETCH_START:
+    switch (action.type) {
+        //GET - fetch tools
+        case FETCH_TOOLS_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
             }
-        case FETCH_SUCCESS:
+        case FETCH_TOOLS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                tools: action.payload
+            }
+        case FETCH_TOOLS_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isFetching: false
+            }
+        //POST - add tool
+        case ADD_TOOL_START:
+            return {
+                ...state,
+                isAdding: true,
+                error: ''
+            }
+        case ADD_TOOL_SUCCESS:
+            return {
+                ...state,
+                isAdding: false,
+                error: '',
+                users: [...state.tools, action.payload]
+            }
+        case ADD_TOOL_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isAdding: false
+            }
+        //PUT - update tool
+        case UPDATE_TOOL_START:
+            return {
+                ...state,
+                isAdding: true,
+                error: ''
+            }
+        case UPDATE_TOOL_SUCCESS:
+            return {
+                ...state,
+                isUpdating: false,
+                error: '',
+                tools: [...state.tools.filter(item => { return item.id !== action.payload.id }), action.payload]
+            }
+        case UPDATE_TOOL_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isUpdating: false
+            }
+        //DELETE - delete a tool
+        case DELETE_TOOL_START:
+            return {
+                ...state,
+                isDeleting: true,
+                error: ''
+            }
+        case DELETE_TOOL_SUCCESS:
+            return {
+                ...state,
+                isDeleting: false,
+                error: '',
+                tools: state.tools.filter(item => { return item.id !== action.payload})
+            }
+        case DELETE_TOOL_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                isDeleting: false
+            }
+        //GET - fetch all users
+        case FETCH_USERS_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case FETCH_USERS_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
                 users: action.payload
             }
-        case FETCH_FAILURE:
+        case FETCH_USERS_FAILURE:
             return {
                 ...state,
                 error: action.payload,
                 isFetching: false
             }
-        case ADD_START:
+        //GET - fetch a single user by id
+        case FETCH_USERID_START:
             return {
                 ...state,
-                isAdding: true,
+                isFetching: true,
                 error: ''
             }
-        case ADD_SUCCESS:
+        case FETCH_USERID_SUCCESS:
             return {
                 ...state,
-                isAdding: false,
+                isFetching: false,
                 error: '',
-                users: [...state.users, action.payload]
+                userProfile: action.payload
             }
-        case ADD_FAILURE:
+        case FETCH_USERID_FAILURE:
             return {
                 ...state,
                 error: action.payload,
-                isAdding: false
+                isFetching: false
             }
-        case UPDATE_START:
+        //PUT - update a single user by id
+        case UPDATE_USER_START:
             return {
                 ...state,
                 isAdding: true,
                 error: ''
             }
-        case UPDATE_SUCCESS:
+        case UPDATE_USER_SUCCESS:
+            console.log('Update Payload', action.payload);
             return {
                 ...state,
                 isUpdating: false,
                 error: '',
-                userss: [...state.users.filter(item => { return item.id !== action.payload.id}), action.payload]
+                users: [...state.users.filter(item => { return item.id !== action.payload.id }), action.payload]
             }
-        case UPDATE_FAILURE:
+        case UPDATE_USER_FAILURE:
             return {
                 ...state,
                 error: action.payload,
                 isUpdating: false
             }
-        case DELETE_START:
-            return {
-                ...state,
-                isDeleting: true,
-                error: ''
-            }
-        case DELETE_SUCCESS:
-            return {
-                ...state,
-                isDeleting: false,
-                error: '',
-                users: state.users.filter(item => { return item.id !== action.payload})
-            }
-        case DELETE_FAILURE:
-            return {
-                ...state,
-                error: action.payload,
-                isDeleting: false
-            }
-            default:
+        default:
             return state;
     }
 }

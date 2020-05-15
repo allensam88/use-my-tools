@@ -1,28 +1,43 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import PrivateRoute from './utils/PrivateRoute';
-import Login from './components/Sam/Login';
-import SignUp from './components/Sam/SignUp';
-import ToolList from './components/Aaron/ToolList';
-import Profile from "./components/Kai/profile";
-import NavBar from "./components/Kai/navBar";
-import './App.css';
+import React from "react";
+import { Route } from "react-router-dom";
+import PrivateRoute from "./utils/PrivateRoute";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import "./Components.css";
+import "./Card.css";
+import "./App.css";
+import NewToolList from "./components/NewToolList";
+import Profile from "./components/profile";
+import UpdateUser from "./components/UpdateUser";
+import AddTool from "./components/AddTool";
+import UpdateTool from "./components/UpdateTool";
+import DeleteTool from "./components/DeleteTool";
+import Footer from "./components/footer";
 
 function App() {
-    return (
-        <div className="App">
-            <h1>Use My Tools!!!</h1>
-            <NavBar />
-            
-            <Route exact path="/" component={Login} />
-            
-            <Route path="/sign-up" component={SignUp} />
-            
-            <PrivateRoute path="/tools" component={ToolList} />
-            
-            <PrivateRoute exact path="/userprofile" component={Profile} />
-        </div>
-    );
+	return (
+		<div className="App">
+			<Route exact path="/" component={Login} />
+
+			<Route path="/sign-up" component={SignUp} />
+
+			<PrivateRoute path="/tools" component={NewToolList} />
+
+			<PrivateRoute path="/user/:id" component={Profile} />
+
+			<PrivateRoute path="/update-user/:id" component={UpdateUser} />
+
+			<PrivateRoute path="/add-tool" component={AddTool} />
+
+			<PrivateRoute path="/update-tool/:id" component={UpdateTool} />
+
+			<PrivateRoute path="/delete-tool/:id" component={DeleteTool} />
+
+			<div className="footer-class">
+				<Footer />
+			</div>
+		</div>
+	);
 }
 
 export default App;
